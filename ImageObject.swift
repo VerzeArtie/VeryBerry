@@ -26,10 +26,16 @@ class ImageObject: UIImageView
     var activeRandom:Double? = 0 // 出現後、動き始め開始ポイントXをランダム（落ちるイチゴ）
     var fixPattern:Double? = 0.0 // 動作パターン（固定パラメタ１）
     var fixPattern2:Double? = 0.0 // 動作パターン（固定パラメタ２）
+    var fixPattern3:Double? = 0.0 // 動作パターン（固定パラメタ３）// add [ENHANCE-A]
     var immuneDamage:Int = 0 // ダメージ無効（無敵）
     var nowFreeze:Int = 0 // 凍結状態（動作不可) // add [ENHANCE-A]
+    var nowRiding:Int = 0 // 筋斗雲に乗っている状態 // add [ENHANCE-A]
+    var parentObj:ImageObject! = nil  // 苺オブジェクト // add [ENHANCE-A]
+    var maxDisappear:Int = 0 // 消滅するまでのトータルカウント値 // add [ENHANCE-A]
+    var nowDisappear:Int = 0 // 消滅するまでの現在カウントダウン値 // add [ENHANCE-A]
+    var nowActive:Bool = false // 現在アクティブかどうかを示すフラグ // add [ENHANCE-A]
     
-    func MoveUpdate(num:Int, base:CGFloat) -> Bool {
+    func MoveUpdate(num:Int, base:CGFloat, scaleY:CGFloat) -> Bool {
         if (1 <= self.movePattern)
         {
             if (self.movePattern == 0) // none
@@ -96,7 +102,7 @@ class ImageObject: UIImageView
             {
                 if (self.center.x < ScaleLogic.MovePattern(self.movePattern, base:base))
                 {
-                    var dy:Double = self.baseY + 12.0 * log2(Double(self.progress) + 2.0)
+                    let dy:Double = self.baseY + 12.0 * log2(Double(self.progress) + 2.0)
                     self.center = CGPoint(x:self.center.x - 1.0, y:CGFloat(dy))
                     self.progress++
                 }
@@ -105,9 +111,9 @@ class ImageObject: UIImageView
             {
                 if (self.center.x < ScaleLogic.MovePattern(self.movePattern, base:base))
                 {
-                    var r:Double = 30.0
-                    var dx:Double = 400.0 + r * cos(M_PI * (90.0 + Double(self.progress)) / 180.0) - Double(self.progress)
-                    var dy:Double = self.baseY - r + (r * sin(M_PI * (90.0 + Double(self.progress)) / 180.0))
+                    let r:Double = 30.0
+                    let dx:Double = 400.0 + r * cos(M_PI * (90.0 + Double(self.progress)) / 180.0) - Double(self.progress)
+                    let dy:Double = self.baseY - r + (r * sin(M_PI * (90.0 + Double(self.progress)) / 180.0))
                     self.center = CGPoint(x:dx, y:dy)
                     self.progress++
                 }
@@ -116,9 +122,9 @@ class ImageObject: UIImageView
             {
                 if (self.center.x < ScaleLogic.MovePattern(self.movePattern, base:base))
                 {
-                    var r:Double = 20.0;
-                    var dx:Double = (Double)(self.center.x) - 1.2;
-                    var dy:Double = self.baseY - r + (r * sin(M_PI * ((Double)(self.progress)*3.0) / 180.0));
+                    let r:Double = 20.0;
+                    let dx:Double = (Double)(self.center.x) - 1.2;
+                    let dy:Double = self.baseY - r + (r * sin(M_PI * ((Double)(self.progress)*3.0) / 180.0));
                     self.center = CGPoint(x:dx, y:dy);
                     self.progress++;
                 }
@@ -127,9 +133,9 @@ class ImageObject: UIImageView
             {
                 if (self.center.x < ScaleLogic.MovePattern(self.movePattern, base:base))
                 {
-                    var r:Double = 80.0;
-                    var dx:Double = (Double)(self.center.x);
-                    var dy:Double = self.baseY - (r * sin(M_PI * ((Double)(self.progress)*3.0) / 180.0));
+                    let r:Double = 80.0;
+                    let dx:Double = (Double)(self.center.x);
+                    let dy:Double = self.baseY - (r * sin(M_PI * ((Double)(self.progress)*3.0) / 180.0));
                     self.center = CGPoint(x:dx, y:dy);
                     self.progress++;
                 }
@@ -138,7 +144,7 @@ class ImageObject: UIImageView
             {
                 if (self.center.x < ScaleLogic.MovePattern(self.movePattern, base:base))
                 {
-                    var dy = self.baseY - (Double)(log((Double)(self.progress))) * 5.0;
+                    let dy = self.baseY - (Double)(log((Double)(self.progress))) * 5.0;
                     self.center = CGPoint(x:(Double)(self.center.x) - 1.1, y:dy);
                     self.progress++;
                 }
@@ -181,8 +187,8 @@ class ImageObject: UIImageView
             {
                 if (self.center.x <= ScaleLogic.MovePattern(self.movePattern, base:base))
                 {
-                    var dx:Double = (Double)(self.center.x) - (Double)(self.progress) * 0.1;
-                    var dy:Double = (Double)(self.center.y);
+                    let dx:Double = (Double)(self.center.x) - (Double)(self.progress) * 0.1;
+                    let dy:Double = (Double)(self.center.y);
                     self.center = CGPoint(x:dx, y:dy);
                     self.progress++;
                 }
@@ -191,7 +197,7 @@ class ImageObject: UIImageView
             {
                 if (self.center.x < ScaleLogic.MovePattern(self.movePattern, base:base))
                 {
-                    var dy:Double = self.baseY + (Double)(log2((Double)(self.progress) + 2.0) * 5.0);
+                    let dy:Double = self.baseY + (Double)(log2((Double)(self.progress) + 2.0) * 5.0);
                     self.center = CGPoint(x:(Double)(self.center.x - 1.0), y:dy);
                     self.progress++;
                 }
@@ -251,12 +257,12 @@ class ImageObject: UIImageView
                 {
                     if (self.progress <= 300)
                     {
-                        var dx:Double = (Double)(self.center.x) + 2.50;
+                        let dx:Double = (Double)(self.center.x) + 2.50;
                         self.center = CGPoint(x:dx, y:(Double)(self.center.y));
                     }
                     else
                     {
-                        var dx:Double = (Double)(self.center.x) + 3.0 - ((Double)(self.progress)-310.0) * 0.1;
+                        let dx:Double = (Double)(self.center.x) + 3.0 - ((Double)(self.progress)-310.0) * 0.1;
                         self.center = CGPoint(x:dx, y:(Double)(self.center.y));
                     }
                     self.progress++;
@@ -265,7 +271,7 @@ class ImageObject: UIImageView
                 {
                     if (self.center.x < ScaleLogic.MovePattern(self.movePattern, base:base))
                     {
-                        var dy:Double = self.baseY + (Double)(log2((Double)(self.progress))) * 27.0;
+                        let dy:Double = self.baseY + (Double)(log2((Double)(self.progress))) * 27.0;
                         self.center = CGPoint(x:(Double)(self.center.x) - 1.5, y:dy);
                         self.progress++;
                     }
@@ -273,82 +279,82 @@ class ImageObject: UIImageView
             }
             else if (self.movePattern == 24) // bigbird (circle 1)
             {
-                var r:Double = 100.0;
-                var speed:Double = 1.0;
-                var dx:Double = self.baseX - 0.0 + r * cos(M_PI * (90.0 + (Double)(self.progress) * speed) / 180.0) - (Double)(self.progress)*2.5;
-                var dy:Double = self.baseY - r + (r * sin(M_PI * (90.0 + (Double)(self.progress) * speed) / 180.0));
+                let r:Double = 100.0;
+                let speed:Double = 1.0;
+                let dx:Double = self.baseX - 0.0 + r * cos(M_PI * (90.0 + (Double)(self.progress) * speed) / 180.0) - (Double)(self.progress)*2.5;
+                let dy:Double = self.baseY - r + (r * sin(M_PI * (90.0 + (Double)(self.progress) * speed) / 180.0));
                 self.center = CGPoint(x:dx, y:dy);
                 self.progress++;
             }
             else if (self.movePattern == 25) // bigbird (circle 2)
             {
-                var r:Double = 100.0;
-                var speed:Double = 1.0;
-                var dx:Double = self.baseX - 200.0 + r * cos(M_PI * (210.0 + (Double)(self.progress) * speed) / 180.0) - (Double)(self.progress)*2.5;
-                var dy:Double = self.baseY - r + (r * sin(M_PI * (210.0 + (Double)(self.progress) * speed) / 180.0));
+                let r:Double = 100.0;
+                let speed:Double = 1.0;
+                let dx:Double = self.baseX - 200.0 + r * cos(M_PI * (210.0 + (Double)(self.progress) * speed) / 180.0) - (Double)(self.progress)*2.5;
+                let dy:Double = self.baseY - r + (r * sin(M_PI * (210.0 + (Double)(self.progress) * speed) / 180.0));
                 self.center = CGPoint(x:dx, y:dy);
                 self.progress++;
             }
             else if (self.movePattern == 26) // bigbird (circle 3)
             {
-                var r:Double = 100.0;
-                var speed:Double = 1.0;
-                var dx:Double = self.baseX - 100.0 + r * cos(M_PI * (330.0 + (Double)(self.progress) * speed) / 180.0) - (Double)(self.progress)*2.5;
-                var dy:Double = self.baseY + r + (r * sin(M_PI * (Double)(330.0 + (Double)(self.progress) * speed) / 180.0));
+                let r:Double = 100.0;
+                let speed:Double = 1.0;
+                let dx:Double = self.baseX - 100.0 + r * cos(M_PI * (330.0 + (Double)(self.progress) * speed) / 180.0) - (Double)(self.progress)*2.5;
+                let dy:Double = self.baseY + r + (r * sin(M_PI * (Double)(330.0 + (Double)(self.progress) * speed) / 180.0));
                 self.center = CGPoint(x:dx, y:dy);
                 self.progress++;
             }
             else if (self.movePattern == 27) // bigbird (circle 4)
             {
-                var r:Double = 100.0;
-                var speed:Double = 2.0;
-                var dx:Double = self.baseX - 0.0 + r * cos(M_PI * (90.0 + (Double)(self.progress) * speed) / 180.0) - (Double)(self.progress)*2.5;
-                var dy:Double = self.baseY - r + (r * sin(M_PI * (90.0 + (Double)(self.progress) * speed) / 180.0));
+                let r:Double = 100.0;
+                let speed:Double = 2.0;
+                let dx:Double = self.baseX - 0.0 + r * cos(M_PI * (90.0 + (Double)(self.progress) * speed) / 180.0) - (Double)(self.progress)*2.5;
+                let dy:Double = self.baseY - r + (r * sin(M_PI * (90.0 + (Double)(self.progress) * speed) / 180.0));
                 self.center = CGPoint(x:dx, y:dy);
                 self.progress++;
             }
             else if (self.movePattern == 28) // bigbird (circle 5)
             {
-                var r:Double = 100.0;
-                var speed:Double = 2.0;
-                var dx:Double = self.baseX - 200.0 + r * cos(M_PI * (210.0 + (Double)(self.progress) * speed) / 180.0) - (Double)(self.progress)*2.5;
-                var dy:Double = self.baseY - r + (r * sin(M_PI * (210.0 + (Double)(self.progress) * speed) / 180.0));
+                let r:Double = 100.0;
+                let speed:Double = 2.0;
+                let dx:Double = self.baseX - 200.0 + r * cos(M_PI * (210.0 + (Double)(self.progress) * speed) / 180.0) - (Double)(self.progress)*2.5;
+                let dy:Double = self.baseY - r + (r * sin(M_PI * (210.0 + (Double)(self.progress) * speed) / 180.0));
                 self.center = CGPoint(x:dx, y:dy);
                 self.progress++;
             }
             else if (self.movePattern == 29) // bigbird (circle 6)
             {
-                var r:Double = 100.0;
-                var speed:Double = 2.0;
-                var dx:Double = self.baseX - 100.0 + r * cos(M_PI * (330.0 + (Double)(self.progress) * speed) / 180.0) - (Double)(self.progress)*2.5;
-                var dy:Double = self.baseY + r + (r * sin(M_PI * (Double)(330.0 + (Double)(self.progress) * speed) / 180.0));
+                let r:Double = 100.0;
+                let speed:Double = 2.0;
+                let dx:Double = self.baseX - 100.0 + r * cos(M_PI * (330.0 + (Double)(self.progress) * speed) / 180.0) - (Double)(self.progress)*2.5;
+                let dy:Double = self.baseY + r + (r * sin(M_PI * (Double)(330.0 + (Double)(self.progress) * speed) / 180.0));
                 self.center = CGPoint(x:dx, y:dy);
                 self.progress++;
             }
             else if (self.movePattern == 30) // bigbird (circle 7)
             {
-                var r:Double = 100.0;
-                var speed:Double = 3.0;
-                var dx:Double = self.baseX - 0.0 + r * cos(M_PI * (Double)((90.0 + (Double)(self.progress) * speed)) / 180.0) - (Double)(self.progress)*2.5;
-                var dy:Double = self.baseY - r + (r * sin(M_PI * (Double)((90.0 + (Double)(self.progress) * speed)) / 180.0));
+                let r:Double = 100.0;
+                let speed:Double = 3.0;
+                let dx:Double = self.baseX - 0.0 + r * cos(M_PI * (Double)((90.0 + (Double)(self.progress) * speed)) / 180.0) - (Double)(self.progress)*2.5;
+                let dy:Double = self.baseY - r + (r * sin(M_PI * (Double)((90.0 + (Double)(self.progress) * speed)) / 180.0));
                 self.center = CGPoint(x:dx, y:dy);
                 self.progress++;
             }
             else if (self.movePattern == 31) // bigbird (circle 8)
             {
-                var r:Double = 100.0;
-                var speed:Double = 3.0;
-                var dx:Double = self.baseX - 200.0 + r * cos(M_PI * (210.0 + (Double)(self.progress) * speed) / 180.0) - (Double)(self.progress) * 2.5;
-                var dy:Double = self.baseY - r + (r * sin(M_PI * (210.0 + (Double)(self.progress) * speed) / 180.0));
+                let r:Double = 100.0;
+                let speed:Double = 3.0;
+                let dx:Double = self.baseX - 200.0 + r * cos(M_PI * (210.0 + (Double)(self.progress) * speed) / 180.0) - (Double)(self.progress) * 2.5;
+                let dy:Double = self.baseY - r + (r * sin(M_PI * (210.0 + (Double)(self.progress) * speed) / 180.0));
                 self.center = CGPoint(x:dx, y:dy);
                self.progress++;
             }
             else if (self.movePattern == 32) // bigbird (circle 9)
             {
-                var r:Double = 100.0;
-                var speed:Double = 3.0;
-                var dx:Double = self.baseX - 100.0 + r * cos(M_PI * (330.0 + (Double)(self.progress) * speed) / 180.0) - (Double)(self.progress)*2.5;
-                var dy:Double = self.baseY + r + (r * sin(M_PI * (330.0 + (Double)(self.progress) * speed) / 180.0));
+                let r:Double = 100.0;
+                let speed:Double = 3.0;
+                let dx:Double = self.baseX - 100.0 + r * cos(M_PI * (330.0 + (Double)(self.progress) * speed) / 180.0) - (Double)(self.progress)*2.5;
+                let dy:Double = self.baseY + r + (r * sin(M_PI * (330.0 + (Double)(self.progress) * speed) / 180.0));
                 self.center = CGPoint(x:dx, y:dy);
                 self.progress++;
             }
@@ -358,8 +364,8 @@ class ImageObject: UIImageView
                 {
                     var ddx:Double = 13.0 - (Double)(self.progress) * 0.3;
                     if (ddx <= 0.5) { ddx = 0.5; }
-                    var dx:Double = (Double)(self.center.x) - ddx;
-                    var dy:Double = (Double)(self.center.y);
+                    let dx:Double = (Double)(self.center.x) - ddx;
+                    let dy:Double = (Double)(self.center.y);
                     self.center = CGPoint(x:dx, y:dy);
                     self.progress++;
                 }
@@ -368,15 +374,15 @@ class ImageObject: UIImageView
             {
                 if ((Double)(self.center.x) <= (Double)(ScaleLogic.MovePattern(self.movePattern, base:base)) + self.activeRandom!)
                 {
-                    var dx:Double = (Double)(self.center.x);
+                    let dx:Double = (Double)(self.center.x);
                     if (self.progress <= 10)
                     {
-                        var dy:Double = (Double)(self.center.y) + 4.0;
+                        let dy:Double = (Double)(self.center.y) + 4.0;
                         self.center = CGPoint(x:dx, y:dy);
                     }
                     else
                     {
-                        var dy:Double = (Double)(self.center.y) + ((Double)(self.progress) - 10.0) * 0.1;
+                        let dy:Double = (Double)(self.center.y) + ((Double)(self.progress) - 10.0) * 0.1;
                         self.center = CGPoint(x:dx, y:dy);
                     }
                     self.progress++;
@@ -397,9 +403,9 @@ class ImageObject: UIImageView
             {
                 if (self.center.x < ScaleLogic.MovePattern(self.movePattern, base:base))
                 {
-                    var r:Double = 80.0;
-                    var dx:Double = (Double)(self.center.x);
-                    var dy:Double = self.baseY - (r * sin(M_PI * ((Double)(self.progress)*2.0) / 180.0));
+                    let r:Double = 80.0;
+                    let dx:Double = (Double)(self.center.x);
+                    let dy:Double = self.baseY - (r * sin(M_PI * ((Double)(self.progress)*2.0) / 180.0));
                     self.center = CGPoint(x:dx, y:dy);
                     self.progress++;
                 }
@@ -408,8 +414,8 @@ class ImageObject: UIImageView
             {
                 if (self.center.x < ScaleLogic.MovePattern(self.movePattern, base:base))
                 {
-                    var dx:Double = (Double)(self.center.x) - (Double)(self.progress) * 0.1;
-                    var dy:Double = self.baseY + (Double)(log2((Double)(self.progress))) * 14.0;
+                    let dx:Double = (Double)(self.center.x) - (Double)(self.progress) * 0.1;
+                    let dy:Double = self.baseY + (Double)(log2((Double)(self.progress))) * 14.0;
                     self.center = CGPoint(x: dx, y: dy);
                     self.progress++;
                 }
@@ -426,7 +432,7 @@ class ImageObject: UIImageView
                 {
                     dx = self.center.x - 1.5
                 }
-                var dy = self.baseY - log2(Double(self.progress)) * self.activeRandom!
+                let dy = self.baseY - log2(Double(self.progress)) * self.activeRandom!
                 self.center = CGPointMake(dx, CGFloat(dy))
                 self.progress++
             }
@@ -447,7 +453,7 @@ class ImageObject: UIImageView
                 {
                     dx = self.center.x - 1.5
                 }
-                var dy = self.baseY + log2(Double(self.progress)) * self.activeRandom!
+                let dy = self.baseY + log2(Double(self.progress)) * self.activeRandom!
                 self.center = CGPointMake(dx, CGFloat(dy))
                 self.progress++
             }
@@ -461,7 +467,7 @@ class ImageObject: UIImageView
                 {
                     if (self.progress <= 20)
                     {
-                        var dy = self.center.y + 4.0
+                        let dy = self.center.y + 4.0
                         self.center = CGPointMake(self.center.x + 2.5, dy)
                     }
                     else if (self.progress <= 40)
@@ -485,7 +491,7 @@ class ImageObject: UIImageView
                 {
                     if (self.progress <= 20)
                     {
-                        var dy = self.center.y + 4.0
+                        let dy = self.center.y + 4.0
                         self.center = CGPointMake(self.center.x + 2.5, dy)
                     }
                     else if (self.progress <= 40)
@@ -509,7 +515,7 @@ class ImageObject: UIImageView
                 {
                     if (self.progress <= 20)
                     {
-                        var dy = self.center.y + 4.0
+                        let dy = self.center.y + 4.0
                         self.center = CGPointMake(self.center.x + 2.5, dy)
                     }
                     else if (self.progress <= 40)
@@ -528,8 +534,8 @@ class ImageObject: UIImageView
                 if (self.center.x < ScaleLogic.MovePattern(self.movePattern, base:base))
                 {
                     if (self.activeRandom < 0) { self.activeRandom = self.activeRandom! * -1.0 }
-                    var r:Double = 80.0
-                    var dy:Double = self.baseY - (r * sin(M_PI * (Double(self.progress)*(1.0 + self.activeRandom!/10.0)) / 180.0))
+                    let r:Double = 80.0
+                    let dy:Double = self.baseY - (r * sin(M_PI * (Double(self.progress)*(1.0 + self.activeRandom!/10.0)) / 180.0))
                     self.center = CGPointMake(self.center.x, CGFloat(dy))
                     self.progress++
                 }
@@ -554,7 +560,7 @@ class ImageObject: UIImageView
             {
                 if (self.center.x < ScaleLogic.MovePattern(self.movePattern, base:base))
                 {
-                    var dy:Double = Double(self.center.y) + self.fixPattern!
+                    let dy:Double = Double(self.center.y) + self.fixPattern!
                     self.center = CGPointMake(self.center.x - 1, CGFloat(dy))
                     self.progress++
                 }
@@ -563,7 +569,7 @@ class ImageObject: UIImageView
             {
                 if (self.center.x < ScaleLogic.MovePattern(self.movePattern, base:base))
                 {
-                    var dy = Double(self.center.y) + self.fixPattern!
+                    let dy = Double(self.center.y) + self.fixPattern!
                     self.center = CGPoint(x:Double(self.center.x) - 2.0, y:dy)
                     self.progress++
                 }
@@ -586,10 +592,10 @@ class ImageObject: UIImageView
             }
             else if (self.movePattern == 49) // big-bird (large circle)
             {
-                var r = self.fixPattern!
-                var speed = self.fixPattern2!
-                var dx = self.baseX + r * cos(M_PI * (Double(self.progress) * speed) / 180.0) - Double(self.progress)*1.5
-                var dy = self.baseY + r + (r * sin(M_PI * (Double(self.progress) * speed) / 180.0))
+                let r = self.fixPattern!
+                let speed = self.fixPattern2!
+                let dx = self.baseX + r * cos(M_PI * (Double(self.progress) * speed) / 180.0) - Double(self.progress)*1.5
+                let dy = self.baseY + r + (r * sin(M_PI * (Double(self.progress) * speed) / 180.0))
                 self.center = CGPoint(x:dx, y:dy)
                 self.progress++
             }
@@ -597,8 +603,8 @@ class ImageObject: UIImageView
             {
                 if (self.center.x <= ScaleLogic.MovePattern(self.movePattern, base:base))
                 {
-                    var dx:Double = Double(self.center.x) - 2.0 - Double(self.progress) * self.fixPattern!
-                    var dy:Double = Double(self.center.y)
+                    let dx:Double = Double(self.center.x) - 2.0 - Double(self.progress) * self.fixPattern!
+                    let dy:Double = Double(self.center.y)
                     self.center = CGPoint(x:dx, y:dy)
                     self.progress++
                 }
@@ -607,8 +613,8 @@ class ImageObject: UIImageView
             {
                 if (self.center.x <= ScaleLogic.MovePattern(self.movePattern, base:base))
                 {
-                    var dx = self.center.x - 1;
-                    var dy = self.center.y;
+                    let dx = self.center.x - 1;
+                    let dy = self.center.y;
                     self.center = CGPointMake(dx, dy);
                     self.progress++;
                 }
@@ -617,8 +623,8 @@ class ImageObject: UIImageView
             {
                 if (self.center.x <= ScaleLogic.MovePattern(self.movePattern, base:base))
                 {
-                    var dx = Double(self.center.x) - self.fixPattern!
-                    var dy = Double(self.center.y) + self.fixPattern2!
+                    let dx = Double(self.center.x) - self.fixPattern!
+                    let dy = Double(self.center.y) + self.fixPattern2!
                     self.center = CGPoint(x:dx, y:dy)
                     self.progress++
                 }
@@ -651,94 +657,12 @@ class ImageObject: UIImageView
                 if (self.activeRandom < 0) { self.activeRandom = self.activeRandom! * -1.0 }
                 if (self.center.x <= ScaleLogic.MovePattern(self.movePattern, base: base)) {
                     self.progress++;
-                    var dy:Double = Double(self.baseY) + log(Double(self.progress)) * self.activeRandom!;
+                    let dy:Double = Double(self.baseY) + log(Double(self.progress)) * self.activeRandom!;
                     self.center = CGPoint(x:self.center.x - 1.0, y:CGFloat(dy))
                 }
             }
-            else if (self.movePattern == 56) { // Heaven 5 ( boss )
-                var dy:Double = 0
-                var dx:Double = 0
-
-                if (self.progress <= 120)
-                {
-                    MoveLogic.GoStraight(self);
-                }
-                else if (self.progress <= 200) // +80
-                {
-                    MoveLogic.GoDown(self);
-                }
-                else if (self.progress <= 350) // +150
-                {
-                    MoveLogic.GoLeft(self);
-                }
-                else if (self.progress <= 510) // +160
-                {
-                    MoveLogic.GoUp(self);
-                }
-                else if (self.progress <= 660) // +150
-                {
-                    MoveLogic.GoRight(self);
-                }
-                else if (self.progress <= 740) // +80
-                {
-                    MoveLogic.GoDown(self);
-                }
-                else if (self.progress <= 890) {
-                    dx = (Double)(self.center.x) - 3.0 + 0.05 * (Double(progress) - 740.0);
-                    dy = (Double)(self.center.y);
-                    self.center = CGPoint(x:dx, y:dy)
-                }
-                else if (self.progress <= 1040) {
-                    dx = (Double)(self.center.x) + 8.0 - 0.05 * (Double(progress) - 890.0);
-                    dy = (Double)(self.center.y);
-                    self.center = CGPoint(x:dx, y:dy)
-                }
-                else if (self.progress <= 1140) {
-                    dx = (Double)(self.center.x) + 1.6;
-                    dy = (Double)(self.center.y) + 3.0 - 0.06 * (Double(progress) - 1040.0);
-                    self.center = CGPoint(x:dx, y:dy)
-                }
-                else if (self.progress <= 1240) {
-                    dx = (Double)(self.center.x) + 1.6;
-                    dy = (Double)(self.center.y) - 3.0 + 0.06 * (Double(progress) - 1140.0);
-                    self.center = CGPoint(x:dx, y:dy)
-                }
-                else if (self.progress <= 1340) {
-                    dx = (Double)(self.center.x) + 1.6;
-                    dy = (Double)(self.center.y) + 3.0 - 0.06 * (Double(progress) - 1240.0);
-                    self.center = CGPoint(x:dx, y:dy)
-                }
-                else if (self.progress <= 1440) {
-                    dx = (Double)(self.center.x) + 1.6;
-                    dy = (Double)(self.center.y) - 3.0 + 0.06 * (Double(progress) - 1340.0);
-                    self.center = CGPoint(x:dx, y:dy)
-                }
-                else if (self.progress <= 1500) {
-                    dx = (Double)(self.center.x) + 9.0;
-                    dy = (Double)(self.center.y);
-                    self.center = CGPoint(x:dx, y:dy)
-                }
-                else if (self.progress <= 1600) {
-                    dx = (Double)(self.center.x) + 3.0;
-                    dy = (Double)(self.center.y);
-                    self.center = CGPoint(x:dx, y:dy)
-                }
-                else if (self.progress <= 1800) {
-                    dx = (Double)(self.center.x) + 2.5;
-                    dy = (Double)(self.center.y);
-                    self.center = CGPoint(x:dx, y:dy)
-                } else if (self.progress <= 2000) {
-                    var r:Double = 100.0;
-                    var speed:Double = 1.0;
-                    var dx:Double = self.baseX - 0.0 + r * cos(M_PI * (Double)((90.0 + (Double)(self.progress) * speed)) / 180.0) - (Double)(self.progress)*1.0;
-                    var dy:Double = self.baseY - r + (r * sin(M_PI * (Double)((90.0 + (Double)(self.progress) * speed)) / 180.0));
-                    self.center = CGPoint(x:dx, y:dy);
-                }
-                else {
-                    dx = (Double)(self.center.x) - 1.0;
-                    dy = (Double)(self.center.y);
-                    self.center = CGPoint(x:dx, y:dy)
-                }
+            else if (self.movePattern == 56) { // Heaven 5 ( boss / fire )
+                MoveLogic.BlackBirdMove(self, progress: self.progress, base:base)
                 self.progress++;
             }
             else if (self.movePattern == 57) // cloudC (tate yure + speed)
@@ -746,25 +670,165 @@ class ImageObject: UIImageView
                 if (self.center.x < ScaleLogic.MovePattern(self.movePattern, base:base))
                 {
                     if (self.activeRandom < 0) { self.activeRandom = self.activeRandom! * -1.0 }
-                    var r:Double = 120.0
-                    var dx:Double = Double(self.center.x) - self.fixPattern!
-                    var dy:Double = self.baseY - (r * sin(M_PI * (Double(self.progress)*(2.0 + self.activeRandom!/10.0)) / 180.0))
+                    let r:Double = 120.0
+                    let dx:Double = Double(self.center.x) - self.fixPattern!
+                    let dy:Double = self.baseY - (r * sin(M_PI * (Double(self.progress)*(2.0 + self.activeRandom!/10.0)) / 180.0))
                     self.center = CGPoint(x:dx, y:dy)
                     self.progress++
                 }
             }
+            else if (self.movePattern == 58) // kintoun
+            {
+                if (self.nowRiding == 1) {
+                    self.center = CGPoint(x:self.parentObj.center.x-10.0 , y:self.parentObj.center.y + 35.0 * CGFloat(base / 480) )
+                }
+            }
+            else if (self.movePattern == 59) // bird sudden appear, stay x count, then sudden go
+            {
+                if (self.center.x > 400) {
+                    self.center = CGPoint(x:self.center.x-10.0, y:self.center.y)
+                } else if (self.progress <= 100)
+                {
+                    self.center = CGPoint(x:self.center.x+ScaleLogic.GameSpeed(base) + ScaleLogic.ObjectSpeed(base), y:self.center.y)
+                    self.progress++;
+                } else {
+                    self.center = CGPoint(x:self.center.x-6.0, y:self.center.y)
+                    self.progress++;
+                }
+            }
+            else if (self.movePattern == 60) // fall hand (any position)
+            {
+                if (Double(self.center.x) > self.fixPattern! * Double(base / 480))
+                {
+                    self.center = CGPointMake(self.center.x-10.0, self.center.y);
+                }
+                else
+                {
+                    if (self.progress <= 20)
+                    {
+                        let dy = self.center.y + 4.0
+                        self.center = CGPointMake(self.center.x + ScaleLogic.GameSpeed(base) + ScaleLogic.ObjectSpeed(base), dy)
+                    }
+                    else if (self.progress <= 40)
+                    {
+                        self.center = CGPointMake(self.center.x + ScaleLogic.GameSpeed(base) + ScaleLogic.ObjectSpeed(base), self.center.y)
+                    }
+                    else
+                    {
+                        self.center = CGPointMake(self.center.x + ScaleLogic.GameSpeed(base) + ScaleLogic.ObjectSpeed(base), self.center.y+CGFloat((Double(self.progress) - 40.0)*0.2))
+                    }
+                    self.progress++
+                }
+            }
+            else if (self.movePattern == 61) // hand (leftside remain/fadeout)
+            {
+                //if (self.center.x <= ScaleLogic.MovePattern(self.movePattern, base:base))
+                if (Double(self.center.x) > self.fixPattern! * Double(base / 480))
+                {
+                    self.center = CGPointMake(self.center.x + ScaleLogic.MovePattern61(base), self.center.y)
+                } else {
+//                    var ddx:Double = 13.0 - (Double)(self.progress) * 0.3;
+//                    if (ddx <= 0.5) { ddx = 0.5; }
+//                    var dx:Double = (Double)(self.center.x) - ddx;
+//                    var dy:Double = (Double)(self.center.y);
+//                    self.center = CGPoint(x:dx, y:dy);
+                    self.progress++;
+                    if (Double(self.progress) <= self.fixPattern2)
+                    {
+                        self.center = CGPointMake(self.center.x + ScaleLogic.GameSpeed(base) + ScaleLogic.ObjectSpeed(base), self.center.y)
+                    }
+                    else
+                    {
+                        self.center = CGPointMake(self.center.x + ScaleLogic.GameSpeed(base) + ScaleLogic.ObjectSpeed(base), self.center.y+2.0)
+                    }
+                }
+            }
+            else if (self.movePattern == 62) { // anchor down
+                if (Double(self.center.x) > Double(330.0 * base / 480.0) && self.progress <= 0) {
+                    self.center = CGPointMake(self.center.x + ScaleLogic.MovePattern61(base), self.center.y)
+                    self.baseX = Double(self.center.x)
+                } else {
+                    self.progress++;
+                    let r:Double = self.fixPattern! * Double(scaleY / 320.0);
+                    let speed:Double = self.fixPattern2!;
+                    var dx:Double = self.baseX + r * cos(M_PI * ((Double)(self.progress) * speed) / 180.0)
+                    dx = dx - (Double)(self.progress) * Double(2.5 * base / 480.0)
+                    let dy:Double = (r * sin(M_PI * ((Double)(self.progress) * speed) / 180.0));
+                    self.center = CGPoint(x:dx, y:dy);
+                }
+            }
+            else if (self.movePattern == 63) { // anchor up
+                if (Double(self.center.x) > Double(330.0 * base / 480.0) && self.progress <= 0) {
+                    self.center = CGPointMake(self.center.x + ScaleLogic.MovePattern61(base), self.center.y)
+                    self.baseX = Double(self.center.x)
+                } else {
+                    self.progress++;
+                    let r:Double = self.fixPattern! * Double(scaleY / 320.0);
+                    let speed:Double = 1.5;
+                    var dx:Double = self.baseX + r * cos(M_PI * ((Double)(self.progress) * speed) / 180.0)
+                    dx = dx - (Double)(self.progress) * Double(2.5 * base / 480.0)
+                    var dy:Double = self.fixPattern2! * Double(scaleY / 320.0)
+                    dy = dy + (-r * sin(M_PI * ((Double)(self.progress) * speed) / 180.0));
+                    self.center = CGPoint(x:dx, y:dy);
+                }
+            }
+            else if (self.movePattern == 64) // sudden front(cloudD)
+            {
+                if (self.center.x <= ScaleLogic.MovePattern(self.movePattern, base:base))
+                {
+                    var ddx:Double = Double(ScaleLogic.MovePattern64(self.progress, base:base));
+                    if (ddx <= 0.5) { ddx = 0.5; }
+                    let dx:Double = (Double)(self.center.x) - ddx + 0.5 + Double(ScaleLogic.GameSpeed(base)) + Double(ScaleLogic.ObjectSpeed(base));
+                    let dy:Double = (Double)(self.center.y);
+                    self.center = CGPoint(x:dx, y:dy);
+                    self.progress++;
+                }
+            }
+            else if (self.movePattern == 65) // hidari he smooth speed up
+            {
+                if (self.center.x > 400 * (base / 480.0)) {
+                    self.center = CGPoint(x:self.center.x + ScaleLogic.MovePattern61(base), y:self.center.y)
+                } else if (self.progress <= 50) {
+                    self.center = CGPoint(x:self.center.x+ScaleLogic.GameSpeed(base) + ScaleLogic.ObjectSpeed(base), y:self.center.y)
+                    self.progress++;
+                } else {
+                    if (self.progress == 51) {
+                        self.fixPattern2 = Double(arc4random_uniform(UInt32(self.fixPattern2!)));
+                    }
+                    let dx:Double = (Double)(self.center.x) - (Double)(self.progress - 50) * 0.15;
+                    let dy:Double = (Double)(self.center.y) + self.fixPattern! + self.fixPattern2!;//self.fixPattern! / ((Double)((self.progress - 50)));
+                    self.center = CGPoint(x:dx, y:dy);
+                    self.progress++;
+                }
+            }
         }
+        self.RefreshStatus(num)
         self.SceneOut(num)
         return false
     }
 
+    // add start [ENHANCE-A]
+    func RefreshStatus(num:Int) {
+        if (self.nowFreeze > 0) {
+            // no action
+            self.nowFreeze--;
+        }
+        if (self.nowDisappear > 0) {
+            self.nowDisappear--;
+            self.alpha = (CGFloat)((CGFloat)(self.nowDisappear) / (CGFloat)(self.maxDisappear))
+            if (self.nowDisappear <= 0) {
+                self.MoveToDefault();
+            }
+        }
+    }
+    // add end [ENHANCE-A]
+    
     func SceneOut(num:Int)
     {
-        if (self.hidden == false)
+        if (self.nowActive)
         {
-            if (self.center.x <= -100-self.frame.size.width/2)
+            if (self.center.x <= -200-self.frame.size.width/2) // change [ENHANCE-A] 100->200
             {
-                //println("scene out");
                 self.MoveToDefault()
                 return;
             }
@@ -786,25 +850,52 @@ class ImageObject: UIImageView
         self.progress = 0
         self.start = false
         self.specialMove = false
+        self.specialMove2 = false
+        self.activeRandom = 0.0
         self.fixPattern = 0
         self.fixPattern2 = 0
         self.activeRandom = 0
         self.immuneDamage = 0
+        self.nowFreeze = 0 // add [ENHANCE-A]
+        self.nowRiding = 0 // add [ENHANCE-A]
+        self.parentObj = nil;
+        self.maxDisappear = 0 // add [ENHANCE-A]
+        self.nowDisappear = 0 // add [ENHANCE-A]
+        self.alpha = 1.0 // add [ENHANCE-A]
         self.hidden = true
+        self.nowActive = false; // add [ENHANCE-A]
     }
     
+    // add start [ENHANCE-A]
+    func ChangeAnimation(name:Array<UIImage>)
+    {
+        self.stopAnimating()
+        var imageList: [UIImage] = []
+        for var jj:Int = 0; jj < name.count; jj++ {
+            imageList.append(name[jj])
+        }
+        self.animationImages = imageList
+        self.startAnimating()
+    }
     func ActivateObject(x:Double, y:Double, move:Int?, activeRandomX:Double?, width:Int?, fixPattern:Double?, fixPattern2:Double?)
+    {
+        ActivateObject(x, y: y, move: move, activeRandomX: activeRandomX, width: width, fixPattern: fixPattern, fixPattern2: fixPattern2, hiddenFirst:false)
+    }
+    // add end [ENHANCE-A]
+    
+    func ActivateObject(x:Double, y:Double, move:Int?, activeRandomX:Double?, width:Int?, fixPattern:Double?, fixPattern2:Double?, hiddenFirst:Bool!)
     {
         self.movePattern = move
         self.baseX = x
         self.baseY = y
         self.start = false
         self.progress = 0
-        self.hidden = false
+        self.hidden = hiddenFirst
         self.specialMove = false
         self.activeRandom = activeRandomX
         self.fixPattern = fixPattern
         self.fixPattern2 = fixPattern2
+        self.nowActive = true;
         // cloudC専用
         self.center = CGPoint(x:x, y:y)
         if (width > 0)

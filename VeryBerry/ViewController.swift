@@ -30,6 +30,7 @@ class ViewController: UIViewController, ADBannerViewDelegate {
 
     var SCREEN_WIDTH :CGFloat = 0
     var SCREEN_HEIGHT :CGFloat = 0
+    var currentScrollOffset :CGPoint = CGPoint()
     var updateHighScore: Int = 0
     var updateHighScoreAdditional: String = ""
     var imgBack_opening :UIImageView! = nil
@@ -131,95 +132,111 @@ class ViewController: UIViewController, ADBannerViewDelegate {
     var completeStage2:[Int] = [0, 0, 0, 0, 0, 0]
     var imgBerryFreeze01: UIImage! = nil
     var imgCloudC: [UIImage] = [];
+    var imgKintoun: [UIImage] = [];
+    var imgCloudD: [UIImage] = [];
+    var imgBossBird: [UIImage] = [];
+    var imgBossBirdRev: [UIImage] = [];
+    var imgFire: [UIImage] = [];
+    var imgFireRev: [UIImage] = [];
+    var imgArrowRed: [UIImage] = [];
+    var imgArrowBlue: [UIImage] = [];
     
+    enum SceneName : Int {
+        case Ground = 1, Heaven
+        
+        func toString() -> String {
+            switch self {
+            case .Ground: return "GND"
+            case .Heaven: return "HVN"
+            }
+        }
+    }
     func PlusContinueCoin() {
         self.continueCoin++
-        var ud: NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        var flag:String = String(self.continueCoin)
-        //println("bannerViewActionShouldBegin: continue: \(self.continueCoin)")
+        let ud: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let flag:String = String(self.continueCoin)
         ud.setValue(flag, forKey: "continueCoin")
         ud.synchronize()
         self.lblContinueCoinNum.text = "( \(self.continueCoin) )"
     }
     func bannerView(banner: ADBannerView!, didFailToReceiveAdWithError error: NSError!) {
-        //println("bannerView");
         self.adBanner?.hidden = true
     }
     func bannerViewActionDidFinish(banner: ADBannerView!) {
-        //println("bannerViewActionDidFinish")
     }
     func bannerViewActionShouldBegin(banner: ADBannerView!, willLeaveApplication willLeave: Bool) -> Bool {
-        //println("bannerViewActionShouldBegin")
         // 広告タップの度に、コンティニューポイントを加算する。
         PlusContinueCoin()
         return true; // change 2015/05/20 [return willLeave can't touch iAD!]
     }
     
     func bannerViewDidLoadAd(banner: ADBannerView!) {
-        //println("bannerViewDidLoagAd")
         self.adBanner.hidden = false
     }
     func bannerViewWillLoadAd(banner: ADBannerView!) {
-        //println("bannerViewWillLoadAd")
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "CallViewScore" {
-            //println("CallViewScore")
-            var controller = segue.destinationViewController as! ViewScoreController
+            let controller = segue.destinationViewController as! ViewScoreController
+            controller.parent = self
+        }
+        else if segue.identifier == "CallViewAchivement" {
+            let controller = segue.destinationViewController as! ViewAchivementController
             controller.parent = self
         }
         else if segue.identifier == "CallPlay" {
-            //println("CallPlay")
-            var controller = segue.destinationViewController as! ViewGameController
+            let controller = segue.destinationViewController as! ViewGameController
             controller.mode = ViewGameController.gameMode.modeStart
             controller.currentScene = self.selectScene // add (ENHANCE-A)
             controller.currentStage = self.selectStage // add (ENHANCE-A)
             controller.parent = self
         }
         else if segue.identifier == "CallContinue" {
-            //println("CallContinue")
-            var controller = segue.destinationViewController as! ViewGameController
+            let controller = segue.destinationViewController as! ViewGameController
             controller.mode = ViewGameController.gameMode.modeContinue
             controller.parent = self
         }
+        else if segue.identifier == "CallTutorial" {
+            let controller = segue.destinationViewController as! ViewGameController
+            controller.mode = ViewGameController.gameMode.modeTutorial
+            controller.parent = self
+        }
+        else if segue.identifier == "CallStaffCredit" {
+            let controller = segue.destinationViewController as! ViewStaffCreidt
+            controller.parent = self
+        }
         else if segue.identifier == "CallRandom" {
-            //println("CallRandom")
-            var controller = segue.destinationViewController as! ViewGameController
+            let controller = segue.destinationViewController as! ViewGameController
             controller.mode = ViewGameController.gameMode.modeRandom
             controller.parent = self
         }
         else if segue.identifier == "CallRandomContinueYes" {
-            //println("CallRandomContinueYes")
             if (self.continueCoin > 0)
             {
                 self.continueCoin--;
-                var ud: NSUserDefaults = NSUserDefaults.standardUserDefaults()
-                var flag:String = String(self.continueCoin)
-                //println("prepareForSegue:CallRandomContinueYes: \(self.continueCoin)")
+                let ud: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+                let flag:String = String(self.continueCoin)
                 ud.setValue(flag, forKey: "continueCoin")
                 ud.synchronize()
                 self.lblContinueCoinNum.text = "( \(self.continueCoin) )"
             }
-            var controller = segue.destinationViewController as! ViewGameController
+            let controller = segue.destinationViewController as! ViewGameController
             controller.mode = ViewGameController.gameMode.modeRandom
             var value:Int = 0;
-            //println("current Random Level: \(self.progressRandomLevel)")
             for (var ii:Int = 0; ii < self.progressRandomLevel; ii++)
             {
                 value += 500 + 200 * ii;
             }
-            //println("current value: \(value)")
             controller.progress = value
             controller.parent = self
         }
         else if segue.identifier == "CallRandomContinueNo" {
-            //println("CallRandomContinueNo")
-            var controller = segue.destinationViewController as! ViewGameController
+            let controller = segue.destinationViewController as! ViewGameController
             controller.mode = ViewGameController.gameMode.modeRandom
             controller.parent = self
         }
         else if segue.identifier == "CallStageSelect" {
-            var controller = segue.destinationViewController as! ViewStageController
+            let controller = segue.destinationViewController as! ViewStageController
             controller.parent = self
         }
     }
@@ -233,7 +250,6 @@ class ViewController: UIViewController, ADBannerViewDelegate {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        //println("viewWillAppear")
 
         // 画像のロードをこの時点で行い、ステージ開始時の速度を改善試みている。
         self.imgBackground01 = UIImage(named: "background1.png")
@@ -298,6 +314,35 @@ class ViewController: UIViewController, ADBannerViewDelegate {
         if (self.imgEnemyI.count <= 0) {
             self.imgEnemyI.append(UIImage(named: "ufo-18.png")!)
         }
+        if (self.imgKintoun.count <= 0) {
+            self.imgKintoun.append(UIImage(named: "kint-un-20.png")!)
+        }
+        if (self.imgCloudD.count <= 0) {
+            self.imgCloudD.append(UIImage(named: "fallcloud_01.png")!)
+            self.imgCloudD.append(UIImage(named: "fallcloud_02.png")!)
+            self.imgCloudD.append(UIImage(named: "fallcloud_03.png")!)
+            self.imgCloudD.append(UIImage(named: "fallcloud_04.png")!)
+        }
+        if (self.imgBossBird.count <= 0) {
+            self.imgBossBird.append(UIImage(named: "LASBOSS-03.png")!)
+            self.imgBossBird.append(UIImage(named: "LASBOSS-05.png")!)
+        }
+        if (self.imgBossBirdRev.count <= 0) {
+            self.imgBossBirdRev.append(UIImage(named: "LASBOSS-03-rev.png")!)
+            self.imgBossBirdRev.append(UIImage(named: "LASBOSS-05-rev.png")!)
+        }
+        if (self.imgFire.count <= 0) {
+            self.imgFire.append(UIImage(named: "LASBOSS-04.png")!)
+        }
+        if (self.imgFireRev.count <= 0) {
+            self.imgFireRev.append(UIImage(named: "LASBOSS-04-rev.png")!)
+        }
+        if (self.imgArrowRed.count <= 0) {
+            self.imgArrowRed.append(UIImage(named: "arrow_red_rev.png")!)
+        }
+        if (self.imgArrowBlue.count <= 0) {
+            self.imgArrowBlue.append(UIImage(named: "arrow_blue.png")!)
+        }
         
         SCREEN_WIDTH = UIScreen.mainScreen().bounds.size.width
         SCREEN_HEIGHT = UIScreen.mainScreen().bounds.size.height
@@ -307,7 +352,6 @@ class ViewController: UIViewController, ADBannerViewDelegate {
             SCREEN_HEIGHT = UIScreen.mainScreen().bounds.size.width
             SCREEN_WIDTH = UIScreen.mainScreen().bounds.size.height
         }
-        //println("\(SCREEN_WIDTH) \(SCREEN_HEIGHT)")
 
         self.GetSaveData()
         self.GetSaveDataForRandom()
@@ -327,23 +371,18 @@ class ViewController: UIViewController, ADBannerViewDelegate {
     
     func UpdateBackgroundImage() {
         if (self.availableRandom != 0) {
-            self.imgBack_opening.image = UIImage(named: "top-03.png")
+            self.imgBack_opening.image = UIImage(named: "MAP_map-1.png")
+        //    self.imgBack_opening.image = UIImage(named: "top-03.png")
         } else {
-            self.imgBack_opening.image = UIImage(named: "top-03-1.png")
+            self.imgBack_opening.image = UIImage(named: "MAP_map-1.png")
+        //    self.imgBack_opening.image = UIImage(named: "top-03-1.png")
         }
-    }
-
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        //println("viewDidAppear: \(SCREEN_WIDTH)  \(SCREEN_HEIGHT)")
     }
     
     override func viewWillLayoutSubviews() {
-        //println("viewWillLayoutSubviews");
     }
 
     override func viewDidLayoutSubviews() {
-        //println("viewDidLayoutSubviews");
         SetupObjectLayout()
         self.lblRandomStageNum.text = "Current Stage( \(self.progressRandomLevel) )"
         if (self.progressRandomLevel >= 100) {
@@ -361,6 +400,95 @@ class ViewController: UIViewController, ADBannerViewDelegate {
             self.btnRandomContinueYes.backgroundColor = UIColor.whiteColor()
         }
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let scrollView:CustomScrollView = CustomScrollView();
+        scrollView.parent = self
+        let adjust: CGFloat = CGFloat(self.SCREEN_HEIGHT) / CGFloat(self.imgBack_opening.image!.size.height);
+        //self.scrollView.frame = CGRect(x: 0, y: 0, width: self.SCREEN_WIDTH, height: self.SCREEN_HEIGHT)
+        scrollView.frame.size = CGSizeMake(self.SCREEN_WIDTH, self.SCREEN_HEIGHT)
+        scrollView.bounds.size = CGSizeMake(self.SCREEN_WIDTH, self.SCREEN_HEIGHT)
+        scrollView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        scrollView.contentSize = CGSizeMake(self.imgBack_opening.image!.size.width * adjust, self.SCREEN_HEIGHT)
+        self.imgBack_opening.frame = CGRect(x: 0, y: 0, width: self.imgBack_opening.image!.size.width * adjust, height: self.SCREEN_HEIGHT)
+        scrollView.addSubview(self.imgBack_opening)
+        scrollView.setContentOffset(currentScrollOffset, animated: true)
+        self.view.addSubview(scrollView)
+        self.view.bringSubviewToFront(scrollView)
+        scrollView.bringSubviewToFront(self.imgBack_opening)
+        self.view.bringSubviewToFront(self.adBanner);
+        self.view.bringSubviewToFront(self.lblCopyright)
+        
+        var positionListX: [CGFloat] = ScaleLogic.lblStage_baseX(self.SCREEN_WIDTH);
+        var positionListY: [CGFloat] = ScaleLogic.lblStage_baseY(self.SCREEN_WIDTH);
+        var selectTagList: [Int] = [ 101, 102, 103, 104, 105, 106, 201, 202, 203, 204, 205, 206];
+        
+        for (var ii = 0; ii < positionListX.count; ii++) {
+            let button:UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: ScaleLogic.lblStage_Width(self.SCREEN_WIDTH), height: ScaleLogic.lblStage_Width(self.SCREEN_WIDTH)))
+            button.frame.origin = CGPoint(x: positionListX[ii], y: positionListY[ii])
+            button.tag = selectTagList[ii];
+            button.clipsToBounds = true
+            button.layer.cornerRadius = 15
+            button.textAlignment = NSTextAlignment.Center;
+
+            button.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
+
+            let tempScene = 1 + (ii / Database.MAX_STAGE_NUM);
+            let tempStage = 1 + (ii % Database.MAX_STAGE_NUM);
+
+            if (tempScene == 1) {
+                //if (tempStage == 1 && self.completeStage1_1 == 0) { button.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1) }
+                if (tempStage == 2 && self.completeStage1_1 == 0) { button.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1) }
+                if (tempStage == 3 && self.completeStage1_2 == 0) { button.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1) }
+                if (tempStage == 4 && self.completeStage1_3 == 0) { button.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1) }
+                if (tempStage == 5 && self.completeStage1_4 == 0) { button.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1) }
+                if (tempStage == 6 && self.completeStage1_5 == 0) { button.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1) }
+            }
+            else if (tempScene == 2) {
+                if (tempStage == 1 && self.completeStage1_6 == 0) { button.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1) }
+                if (tempStage == 2 && self.completeStage2[0] == 0) { button.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1) }
+                if (tempStage == 3 && self.completeStage2[1] == 0) { button.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1) }
+                if (tempStage == 4 && self.completeStage2[2] == 0) { button.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1) }
+                if (tempStage == 5 && self.completeStage2[3] == 0) { button.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1) }
+                if (tempStage == 6 && self.completeStage2[4] == 0) { button.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1) }
+            }
+            scrollView.addSubview(button)
+        }
+        
+        let btnCredit:UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: 110, height: 35))
+        btnCredit.frame.origin = CGPoint(x: ScaleLogic.lblCredit_X(self.SCREEN_WIDTH), y: ScaleLogic.lblCredit_Y(self.SCREEN_WIDTH))
+        btnCredit.tag = 10000;
+        btnCredit.layer.cornerRadius = 15;
+        btnCredit.textAlignment = NSTextAlignment.Center;
+        btnCredit.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.0)
+        scrollView.addSubview(btnCredit)
+        
+        let btnTutorial:UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: ScaleLogic.lblTutorial_Width(self.SCREEN_WIDTH), height: ScaleLogic.lblTutorial_Height((self.SCREEN_WIDTH))))
+        btnTutorial.frame.origin = CGPoint(x: ScaleLogic.lblTutorial_X(self.SCREEN_WIDTH), y: ScaleLogic.lblTutorial_Y(self.SCREEN_WIDTH))
+        btnTutorial.tag = 10001;
+        btnTutorial.layer.cornerRadius = 15;
+        btnTutorial.textAlignment = NSTextAlignment.Center;
+        btnTutorial.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.0)
+        scrollView.addSubview(btnTutorial)
+        
+        let btnScore:UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: ScaleLogic.lblScore_Width(self.SCREEN_WIDTH), height: ScaleLogic.lblScore_Height((self.SCREEN_WIDTH))))
+        btnScore.frame.origin = CGPoint(x: ScaleLogic.lblScore_X(self.SCREEN_WIDTH), y: ScaleLogic.lblScore_Y(self.SCREEN_WIDTH))
+        btnScore.tag = 10002;
+        btnScore.layer.cornerRadius = 15;
+        btnScore.textAlignment = NSTextAlignment.Center;
+        btnScore.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.0)
+        scrollView.addSubview(btnScore)
+        
+        let btnAbout:UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: ScaleLogic.lblAbout_Width(self.SCREEN_WIDTH), height: ScaleLogic.lblAbout_Height((self.SCREEN_WIDTH))))
+        btnAbout.frame.origin = CGPoint(x: ScaleLogic.lblAbout_X(self.SCREEN_WIDTH), y: ScaleLogic.lblAbout_Y(self.SCREEN_WIDTH))
+        btnAbout.tag = 10003;
+        btnAbout.layer.cornerRadius = 15;
+        btnAbout.textAlignment = NSTextAlignment.Center;
+        btnAbout.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.0)
+        scrollView.addSubview(btnAbout)
+    }
 
     func SetupObjectLayout() {
         // default iphone 6
@@ -374,12 +502,10 @@ class ViewController: UIViewController, ADBannerViewDelegate {
             dY11 = 57; dY12 = 296; dY13 = 373; dY14 = 378;
             dY22 = 296; dY23 = 373; dY24 = 378;
         } else if (SCREEN_WIDTH == 568) { // maybe iPhone 5S
-            //println("iphone 5s layout")
             width = 170; widthScore = 100; height = 44
             dY11 = 44; dY12 = 228; dY13 = 288; dY14 = 292;
             dY22 = 228;  dY23 = 288; dY24 = 292;
         } else if (SCREEN_WIDTH == 480) { // maybe iPhone 4S
-            //println("iphone 4s layout")
             width = 130; widthScore = 85; height = 43;
             dY11 = 44; dY12 = 228; dY13 = 288; dY14 = 292;
             dY22 = 228; dY23 = 288; dY24 = 292;
@@ -392,44 +518,43 @@ class ViewController: UIViewController, ADBannerViewDelegate {
         self.lblContinueCoinNum.text =  "( \(self.continueCoin) )"
         self.lblCopyright.center = CGPointMake(ScaleLogic.LblCopyright_X(self.SCREEN_WIDTH), ScaleLogic.LblCopyright_Y(self.SCREEN_WIDTH))
         
-        if (self.availableRandom != 0) {
-            //println("available random")
-            self.lblRandomStageNum.hidden = false;
-            self.lblContinueCoinNum.hidden = false;
-            self.btnRandomContinueYes.hidden = false;
-//            self.btnRandomContinueNo.hidden = false; // todo temp delete 2015/06/04
-            self.imgContinueCoin.hidden = false;
-            self.btnRandomStart.hidden = false;
-            self.lblMessageForAD.hidden = false;
-
-            self.btnRandomStart.center = CGPointMake(SCREEN_WIDTH - btnRandomStart.frame.size.width/2, dY11)
-            self.btnRandomStart.bounds.size = CGSizeMake(CGFloat(width), CGFloat(height))
-            self.btnPlay.center = CGPointMake(SCREEN_WIDTH - btnPlay.frame.size.width/2, dY12)
-            self.btnPlay.bounds.size = CGSizeMake(CGFloat(width), CGFloat(height))
-            self.btnContinue.center = CGPointMake(SCREEN_WIDTH - btnContinue.frame.size.width/2, dY13)
-            self.btnContinue.bounds.size = CGSizeMake(CGFloat(width), CGFloat(height))
-            self.btnScore.center = CGPointMake(0 + CGFloat(widthScore/2), dY14)
-            self.btnScore.bounds.size = CGSizeMake(CGFloat(widthScore), CGFloat(height))
-            self.lblMessageForAD.center = CGPointMake(ScaleLogic.LblMessageForAD_X(self.SCREEN_WIDTH), ScaleLogic.LblMessageForAD_Y(self.SCREEN_WIDTH))
-        }
-        else
-        {
-            //println("still normal")
-            self.lblRandomStageNum.hidden = true;
-            self.lblContinueCoinNum.hidden = true;
-            self.btnRandomContinueYes.hidden = true;
-//            self.btnRandomContinueNo.hidden = true; // todo temp delete 2015/06/01
-            self.imgContinueCoin.hidden = true;
-            self.btnRandomStart.hidden = true;
-            self.lblMessageForAD.hidden = true;
-            
-            self.btnPlay.center = CGPointMake(SCREEN_WIDTH - btnPlay.frame.size.width/2, dY22)
-            self.btnPlay.bounds.size = CGSizeMake(CGFloat(width), CGFloat(height))
-            self.btnContinue.center = CGPointMake(SCREEN_WIDTH - btnContinue.frame.size.width/2, dY23)
-            self.btnContinue.bounds.size = CGSizeMake(CGFloat(width), CGFloat(height))
-            self.btnScore.center = CGPointMake(0 + CGFloat(widthScore/2), dY24)
-            self.btnScore.bounds.size = CGSizeMake(CGFloat(widthScore), CGFloat(height))
-        }
+//        if (self.availableRandom != 0) {
+//            self.lblRandomStageNum.hidden = false;
+//            self.lblContinueCoinNum.hidden = false;
+//            self.btnRandomContinueYes.hidden = false;
+//            //self.btnRandomContinueNo.hidden = false; // todo temp delete 2015/06/04
+//            self.imgContinueCoin.hidden = false;
+//            self.btnRandomStart.hidden = false;
+//            self.lblMessageForAD.hidden = false;
+//
+//            self.btnRandomStart.center = CGPointMake(SCREEN_WIDTH - btnRandomStart.frame.size.width/2, dY11)
+//            self.btnRandomStart.bounds.size = CGSizeMake(CGFloat(width), CGFloat(height))
+//            self.btnPlay.center = CGPointMake(SCREEN_WIDTH - btnPlay.frame.size.width/2, dY12)
+//            self.btnPlay.bounds.size = CGSizeMake(CGFloat(width), CGFloat(height))
+//            self.btnContinue.center = CGPointMake(SCREEN_WIDTH - btnContinue.frame.size.width/2, dY13)
+//            self.btnContinue.bounds.size = CGSizeMake(CGFloat(width), CGFloat(height))
+//            self.btnScore.center = CGPointMake(0 + CGFloat(widthScore/2), dY14)
+//            self.btnScore.bounds.size = CGSizeMake(CGFloat(widthScore), CGFloat(height))
+//            self.lblMessageForAD.center = CGPointMake(ScaleLogic.LblMessageForAD_X(self.SCREEN_WIDTH), ScaleLogic.LblMessageForAD_Y(self.SCREEN_WIDTH))
+//        }
+//        else
+//        {
+//            self.lblRandomStageNum.hidden = true;
+//            self.lblContinueCoinNum.hidden = true;
+//            self.btnRandomContinueYes.hidden = true;
+//            //self.btnRandomContinueNo.hidden = true; // todo temp delete 2015/06/01
+//            self.imgContinueCoin.hidden = true;
+//            self.btnRandomStart.hidden = true;
+//            self.lblMessageForAD.hidden = true;
+//            
+//            self.btnPlay.center = CGPointMake(SCREEN_WIDTH - btnPlay.frame.size.width/2, dY22)
+//            self.btnPlay.bounds.size = CGSizeMake(CGFloat(width), CGFloat(height))
+//            self.btnContinue.center = CGPointMake(SCREEN_WIDTH - btnContinue.frame.size.width/2, dY23)
+//            self.btnContinue.bounds.size = CGSizeMake(CGFloat(width), CGFloat(height))
+//            self.btnScore.center = CGPointMake(0 + CGFloat(widthScore/2), dY24)
+//            self.btnScore.bounds.size = CGSizeMake(CGFloat(widthScore), CGFloat(height))
+//        }
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -446,53 +571,52 @@ class ViewController: UIViewController, ADBannerViewDelegate {
     }
 
 	func GetSaveDataForRandom() {
-        //println("GetSaveDataForRandom")
         // ビルド環境にあるファイルを読み込むフォルダ
-        var ud: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let ud: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         
-        var data:String? = ud.valueForKey("progressRandomLevel") as? String
-        if (data != nil) { if (data! != "") { self.progressRandomLevel = data!.toInt()! } }
-        var data2:String? = ud.valueForKey("continueCoin") as? String
-        if (data2 != nil ) { if (data2! != "") { self.continueCoin = data2!.toInt()! } }
+        let data:String? = ud.valueForKey("progressRandomLevel") as? String
+        if (data != nil) { if (data! != "") { self.progressRandomLevel = Int(data!)!; } }
+        let data2:String? = ud.valueForKey("continueCoin") as? String
+        if (data2 != nil ) { if (data2! != "") { self.continueCoin = Int(data2!)!; } }
 	}
     func GetSaveData() {
         // ビルド環境にあるファイルを読み込むフォルダ
-        var ud: NSUserDefaults = NSUserDefaults.standardUserDefaults()
-		var MAX_NUM = 9;
+        let ud: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+		let MAX_NUM = 9;
         
-        var fixString:String = "progressStage";
-        var data1_1_1:String? = ud.valueForKey("progressStage1_1_1") as? String
-        var data1_1_2:String? = ud.valueForKey("progressStage1_1_2") as? String
-        var data1_1_3:String? = ud.valueForKey("progressStage1_1_3") as? String
-        var data1_1:String? = ud.valueForKey("completeStage1_1") as? String
+        let fixString:String = "progressStage";
+        let data1_1_1:String? = ud.valueForKey("progressStage1_1_1") as? String
+        let data1_1_2:String? = ud.valueForKey("progressStage1_1_2") as? String
+        let data1_1_3:String? = ud.valueForKey("progressStage1_1_3") as? String
+        let data1_1:String? = ud.valueForKey("completeStage1_1") as? String
         
-        var data1_2_1:String? = ud.valueForKey("progressStage1_2_1") as? String
-        var data1_2_2:String? = ud.valueForKey("progressStage1_2_2") as? String
-        var data1_2_3:String? = ud.valueForKey("progressStage1_2_3") as? String
-        var data1_2:String? = ud.valueForKey("completeStage1_2") as? String
+        let data1_2_1:String? = ud.valueForKey("progressStage1_2_1") as? String
+        let data1_2_2:String? = ud.valueForKey("progressStage1_2_2") as? String
+        let data1_2_3:String? = ud.valueForKey("progressStage1_2_3") as? String
+        let data1_2:String? = ud.valueForKey("completeStage1_2") as? String
         
-        var data1_3_1:String? = ud.valueForKey("progressStage1_3_1") as? String
-        var data1_3_2:String? = ud.valueForKey("progressStage1_3_2") as? String
-        var data1_3_3:String? = ud.valueForKey("progressStage1_3_3") as? String
-        var data1_3:String? = ud.valueForKey("completeStage1_3") as? String
+        let data1_3_1:String? = ud.valueForKey("progressStage1_3_1") as? String
+        let data1_3_2:String? = ud.valueForKey("progressStage1_3_2") as? String
+        let data1_3_3:String? = ud.valueForKey("progressStage1_3_3") as? String
+        let data1_3:String? = ud.valueForKey("completeStage1_3") as? String
         
-        var data1_4_1:String? = ud.valueForKey("progressStage1_4_1") as? String
-        var data1_4_2:String? = ud.valueForKey("progressStage1_4_2") as? String
-        var data1_4_3:String? = ud.valueForKey("progressStage1_4_3") as? String
-        var data1_4_4:String? = ud.valueForKey("progressStage1_4_4") as? String
-        var data1_4_5:String? = ud.valueForKey("progressStage1_4_5") as? String
-        var data1_4:String? = ud.valueForKey("completeStage1_4") as? String
+        let data1_4_1:String? = ud.valueForKey("progressStage1_4_1") as? String
+        let data1_4_2:String? = ud.valueForKey("progressStage1_4_2") as? String
+        let data1_4_3:String? = ud.valueForKey("progressStage1_4_3") as? String
+        let data1_4_4:String? = ud.valueForKey("progressStage1_4_4") as? String
+        let data1_4_5:String? = ud.valueForKey("progressStage1_4_5") as? String
+        let data1_4:String? = ud.valueForKey("completeStage1_4") as? String
         
-        var data1_5_1:String? = ud.valueForKey("progressStage1_5_1") as? String
-        var data1_5_2:String? = ud.valueForKey("progressStage1_5_2") as? String
-        var data1_5_3:String? = ud.valueForKey("progressStage1_5_3") as? String
-        var data1_5:String? = ud.valueForKey("completeStage1_5") as? String
+        let data1_5_1:String? = ud.valueForKey("progressStage1_5_1") as? String
+        let data1_5_2:String? = ud.valueForKey("progressStage1_5_2") as? String
+        let data1_5_3:String? = ud.valueForKey("progressStage1_5_3") as? String
+        let data1_5:String? = ud.valueForKey("completeStage1_5") as? String
         
-        var data1_6_1:String? = ud.valueForKey("progressStage1_6_1") as? String
-        var data1_6_2:String? = ud.valueForKey("progressStage1_6_2") as? String
-        var data1_6_3:String? = ud.valueForKey("progressStage1_6_3") as? String
-        var data1_6_4:String? = ud.valueForKey("progressStage1_6_4") as? String
-        var data1_6:String? = ud.valueForKey("completeStage1_6") as? String
+        let data1_6_1:String? = ud.valueForKey("progressStage1_6_1") as? String
+        let data1_6_2:String? = ud.valueForKey("progressStage1_6_2") as? String
+        let data1_6_3:String? = ud.valueForKey("progressStage1_6_3") as? String
+        let data1_6_4:String? = ud.valueForKey("progressStage1_6_4") as? String
+        let data1_6:String? = ud.valueForKey("completeStage1_6") as? String
         
         if (data1_1_1 != nil) { if (data1_1_1! == "1") { self.progressStage1_1_1 = 1 } }
         if (data1_1_2 != nil) { if (data1_1_2! == "1") { self.progressStage1_1_2 = 1 } }
@@ -528,17 +652,35 @@ class ViewController: UIViewController, ADBannerViewDelegate {
         if (data1_6 != nil) { if (data1_6! == "1") { self.completeStage1_6 = 1 } }
 
 		// Stage 2 (ENHANCE-A)
-        var dataList:[String] = [];
+        //let dataList:[String] = [];
         for (var ii = 1; ii <= MAX_NUM; ii++) {
-            var data:String? = ud.valueForKey("\(fixString)2_1_\(ii)") as? String
+            let data:String? = ud.valueForKey("\(fixString)2_1_\(ii)") as? String
             if (data != nil && data! == "1") { self.progressStage2_1[ii] = 1 }
-        }
-        var data2_1:String? = ud.valueForKey("completeStage2_1") as? String
-        if (data2_1 != nil && data2_1! == "1") { self.completeStage2[0] = 1 }
-		// add end (ENHANCE-A)
 
-        var data_availRandom:String? = ud.valueForKey("availableRandom") as? String
-        if (data_availRandom == nil) { /*println("no availableRandom")*/ }
+            let data2:String? = ud.valueForKey("\(fixString)2_2_\(ii)") as? String
+            if (data2 != nil && data2! == "1") { self.progressStage2_2[ii] = 1 }
+            
+            let data3:String? = ud.valueForKey("\(fixString)2_3_\(ii)") as? String
+            if (data3 != nil && data3! == "1") { self.progressStage2_3[ii] = 1 }
+
+            let data4:String? = ud.valueForKey("\(fixString)2_4_\(ii)") as? String
+            if (data4 != nil && data4! == "1") { self.progressStage2_4[ii] = 1 }
+            
+            let data5:String? = ud.valueForKey("\(fixString)2_5_\(ii)") as? String
+            if (data5 != nil && data5! == "1") { self.progressStage2_5[ii] = 1 }
+            
+            let data6:String? = ud.valueForKey("\(fixString)2_6_\(ii)") as? String
+            if (data6 != nil && data6! == "1") { self.progressStage2_6[ii] = 1 }
+            
+            let datacomp:String? = ud.valueForKey("completeStage2_\(ii)") as? String
+            if (datacomp != nil && datacomp! == "1") { self.completeStage2[ii] = 1 }
+        }
+		// add end (ENHANCE-A)
+       
+        let data_availRandom:String? = ud.valueForKey("availableRandom") as? String
+        if (data_availRandom == nil) {
+            // なにもしない
+        }
         else { if (data_availRandom == "1") { self.availableRandom = 1 }}
         if (self.availableRandom == 0) { self.btnRandomStart.hidden = true; }
         else { self.btnRandomStart.hidden = false; }
@@ -546,7 +688,7 @@ class ViewController: UIViewController, ADBannerViewDelegate {
     
     func DetectTopScore(currentScore:Int, additional:String) -> Bool {
         // ビルド環境にあるファイルを読み込むフォルダ
-        var ud: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let ud: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         
         // 実機環境を想定したファイルを読み込むフォルダ
         var score0:String = ""
@@ -566,11 +708,11 @@ class ViewController: UIViewController, ADBannerViewDelegate {
         if (current != nil) { score4 = current as! String }
         
         var sS:[Int] = [0, 0, 0, 0, 0]
-        if (score0 != "") { sS[0] = score0.toInt()!; }
-        if (score1 != "") { sS[1] = score1.toInt()!; }
-        if (score2 != "") { sS[2] = score2.toInt()!; }
-        if (score3 != "") { sS[3] = score3.toInt()!; }
-        if (score4 != "") { sS[4] = score4.toInt()!; }
+        if (score0 != "") { sS[0] = Int(score0)!; }
+        if (score1 != "") { sS[1] = Int(score1)!; }
+        if (score2 != "") { sS[2] = Int(score2)!; }
+        if (score3 != "") { sS[3] = Int(score3)!; }
+        if (score4 != "") { sS[4] = Int(score4)!; }
         
         // bubble sort
         for (var ii:Int = 0; ii < 4; ii++)
@@ -579,7 +721,7 @@ class ViewController: UIViewController, ADBannerViewDelegate {
             {
                 if (sS[jj] > sS[ii])
                 {
-                    var tmp: Int = sS[jj]
+                    let tmp: Int = sS[jj]
                     sS[jj] = sS[ii]
                     sS[ii] = tmp
                 }
@@ -588,18 +730,16 @@ class ViewController: UIViewController, ADBannerViewDelegate {
         
         if (currentScore >= sS[0])
         {
-            //println("update high score detect. \(currentScore)  \(sS[0])")
             return true;
         }
         
-        //println("update high score fail. \(currentScore)  \(sS[0])")
         return false;
     }
     
     func authenticateAchievement(identify: String) {
-        var localPlayer = GKLocalPlayer.localPlayer()
+        let localPlayer = GKLocalPlayer.localPlayer()
         localPlayer.authenticateHandler =
-            { (viewController : UIViewController!, error : NSError!) -> Void in
+            { (viewController : UIViewController?, error : NSError?) -> Void in
                 if viewController != nil
                 {
                     // ランダムプレイ中のため、プレイヤーに新規入力はさせない（新規入力は最初のscoreで）
@@ -621,17 +761,15 @@ class ViewController: UIViewController, ADBannerViewDelegate {
     
     func authenticateLocalPlayer()
     {
-        //println("authenticateLocalPlayer start")
         if (self.updateHighScore > 0) {
             if (self.DetectTopScore(self.updateHighScore, additional:self.updateHighScoreAdditional)) {
-                //println("authenticateLocalPlayer updating")
-                var localPlayer = GKLocalPlayer.localPlayer()
+                let localPlayer = GKLocalPlayer.localPlayer()
                 
                 localPlayer.authenticateHandler =
-                    { (viewController : UIViewController!, error : NSError!) -> Void in
+                    { (viewController : UIViewController?, error : NSError?) -> Void in
                         if viewController != nil
                         {
-                            self.presentViewController(viewController, animated:true, completion: nil)
+                            self.presentViewController(viewController!, animated:true, completion: nil)
                         }
                         else
                         {
@@ -642,7 +780,6 @@ class ViewController: UIViewController, ADBannerViewDelegate {
                                     targetIdentifier = "MAXRANDOMSCORE"
                                 }
                                 let gkScore = GKScore(leaderboardIdentifier: targetIdentifier)
-                                //println("GKScore: \(self.updateHighScore)")
                                 gkScore.value = Int64(self.updateHighScore)
                                 GKScore.reportScores([gkScore], withCompletionHandler: {(error) -> Void in
                                 })
@@ -652,20 +789,13 @@ class ViewController: UIViewController, ADBannerViewDelegate {
                             }
                         }
                 }
-            } else {
-                //println("authenticateLocalPlayer end 2")
             }
         }
-        else
-        {
-            //println("authenticateLocalPlayer end 1")
-        }
-
     }
 
 	func UpdateScoreData(score:Int, bonusA:Int, bonusB:Int, nameAdditional:String, scene:Int) {
         // ビルド環境にあるファイルを読み込むフォルダ
-        var ud: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let ud: NSUserDefaults = NSUserDefaults.standardUserDefaults()
 
 		// add start [ENHANCE-A]
 		var sceneStr:String = ""
@@ -677,12 +807,12 @@ class ViewController: UIViewController, ADBannerViewDelegate {
 		// add end [ENHANCE-A]
 
         // 実機環境を想定したファイルを読み込むフォルダ
-        var currentScoreData:String = String(score)
-        var score0:String? = ud.valueForKey("Score\(nameAdditional)\(sceneStr)0") as? String // change [ENHANCE-A]
-        var score1:String? = ud.valueForKey("Score\(nameAdditional)\(sceneStr)1") as? String // change [ENHANCE-A]
-        var score2:String? = ud.valueForKey("Score\(nameAdditional)\(sceneStr)2") as? String // change [ENHANCE-A]
-        var score3:String? = ud.valueForKey("Score\(nameAdditional)\(sceneStr)3") as? String // change [ENHANCE-A]
-        var score4:String? = ud.valueForKey("Score\(nameAdditional)\(sceneStr)4") as? String // change [ENHANCE-A]
+        let currentScoreData:String = String(score)
+        let score0:String? = ud.valueForKey("Score\(nameAdditional)\(sceneStr)0") as? String // change [ENHANCE-A]
+        let score1:String? = ud.valueForKey("Score\(nameAdditional)\(sceneStr)1") as? String // change [ENHANCE-A]
+        let score2:String? = ud.valueForKey("Score\(nameAdditional)\(sceneStr)2") as? String // change [ENHANCE-A]
+        let score3:String? = ud.valueForKey("Score\(nameAdditional)\(sceneStr)3") as? String // change [ENHANCE-A]
+        let score4:String? = ud.valueForKey("Score\(nameAdditional)\(sceneStr)4") as? String // change [ENHANCE-A]
         var minStr:String = "Score\(nameAdditional)\(sceneStr)0" // 万が一失敗した場合は0番目を対象とする。 // change [ENHANCE-A]
         var minBonusA:String = "BonusA\(nameAdditional)\(sceneStr)0" // 上記同様 // change [ENHANCE-A]
         var minBonusB:String = "BonusB\(nameAdditional)\(sceneStr)0" // 上記同様 // change [ENHANCE-A]
@@ -713,12 +843,12 @@ class ViewController: UIViewController, ADBannerViewDelegate {
             minBonusB = "BonusB\(nameAdditional)\(sceneStr)4" // change [ENHANCE-A]
         }
         else {
-            var s0:Int = score0!.toInt()!
-            var s1:Int = score1!.toInt()!
-            var s2:Int = score2!.toInt()!
-            var s3:Int = score3!.toInt()!
-            var s4:Int = score4!.toInt()!
-            var minValue = min(s0, min(s1, min(s2, min(s3, s4))))
+            let s0:Int = Int(score0!)!
+            let s1:Int = Int(score1!)!
+            let s2:Int = Int(score2!)!
+            let s3:Int = Int(score3!)!
+            let s4:Int = Int(score4!)!
+            let minValue = min(s0, min(s1, min(s2, min(s3, s4))))
             if (score < minValue) {
                 return; // ５位より低いため、何もせず終了
             }
@@ -737,32 +867,24 @@ class ViewController: UIViewController, ADBannerViewDelegate {
 	}
 
     func UpdateSaveDataForRandom(score:Int, bonusA:Int, bonusB:Int, randomStageNumber:Int, scene:Int) {
-        //println("UpdateSaveDataForRandom Start: \(randomStageNumber)")
         UpdateScoreData(score, bonusA:bonusA, bonusB:bonusB, nameAdditional:"Random", scene:scene) // change [ENHANCE-A]
 
 		// ステージクリア情報を更新
-        var ud: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let ud: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         
         var savedata:Int = 0
-        var data:String? = ud.valueForKey("progressRandomLevel") as? String
+        let data:String? = ud.valueForKey("progressRandomLevel") as? String
         if (data != nil)
         {
-            //println("UpdateSaveDataForRandom: not nil")
             if (data! != "")
             {
-                savedata = data!.toInt()!
-                //println("UpdateSaveDataForRandom: not empty: \(savedata)")
-            } else {
-                //println("UpdateSaveDataForRandom: is empty")
+                savedata = Int(data!)!
             }
-        } else {
-            //println("UpdateSaveDataForRandom: nil")
         }
 
         if (savedata <= randomStageNumber)
         {
-            //println("UpdateSaveDataForRandom: setValue: \(randomStageNumber)")
-            var flag:String = String(randomStageNumber)
+            let flag:String = String(randomStageNumber)
             ud.setValue(flag, forKey: "progressRandomLevel")
             ud.synchronize()
         }
@@ -772,7 +894,7 @@ class ViewController: UIViewController, ADBannerViewDelegate {
 		UpdateScoreData(score, bonusA:bonusA, bonusB:bonusB, nameAdditional:"", scene:scene) // change [ENHANCE-A]
         
         // ステージクリア情報を更新
-        var ud: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let ud: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         var flag:String = String(progressStage1_1_1)
         ud.setValue(flag, forKey: "progressStage1_1_1")
         flag = String(progressStage1_1_2)
@@ -836,42 +958,95 @@ class ViewController: UIViewController, ADBannerViewDelegate {
         
 		// add start [ENHANCE-A]
         for (var ii:Int = 0; ii < self.progressStage2_1.count; ii++) {
-	        var flag:String = String(progressStage2_1[ii])
+	        let flag:String = String(progressStage2_1[ii])
 	        ud.setValue(flag, forKey: "progressStage2_1_\(ii+1)")
 		}
         for (var ii:Int = 0; ii < self.progressStage2_2.count; ii++) {
-	        var flag:String = String(progressStage2_2[ii])
+	        let flag:String = String(progressStage2_2[ii])
 	        ud.setValue(flag, forKey: "progressStage2_2_\(ii+1)")
 		}
         for (var ii:Int = 0; ii < self.progressStage2_3.count; ii++) {
-	        var flag:String = String(progressStage2_3[ii])
+	        let flag:String = String(progressStage2_3[ii])
 	        ud.setValue(flag, forKey: "progressStage2_3_\(ii+1)")
 		}
         for (var ii:Int = 0; ii < progressStage2_4.count; ii++) {
-	        var flag:String = String(progressStage2_4[ii])
+	        let flag:String = String(progressStage2_4[ii])
 	        ud.setValue(flag, forKey: "progressStage2_4_\(ii+1)")
 		}
         for (var ii:Int = 0; ii < progressStage2_5.count; ii++) {
-	        var flag:String = String(progressStage2_5[ii])
+	        let flag:String = String(progressStage2_5[ii])
 	        ud.setValue(flag, forKey: "progressStage2_5_\(ii+1)")
 		}
         for (var ii:Int = 0; ii < progressStage2_6.count; ii++) {
-	        var flag:String = String(progressStage2_6[ii])
+	        let flag:String = String(progressStage2_6[ii])
 	        ud.setValue(flag, forKey: "progressStage2_6_\(ii+1)")
 		}
         for (var ii:Int = 0; ii < completeStage2.count; ii++) {
-	        var flag:String = String(completeStage2[ii])
+	        let flag:String = String(completeStage2[ii])
 	        ud.setValue(flag, forKey: "completeStage2_\(ii+1)")
 		}
 		// end start [ENHANCE-A]
 
         // クリア状況を示すフラグを更新
-        var availRandomFlag:String = String(availableRandom)
-        //println("availRandomFlag \(availRandomFlag)")
+        let availRandomFlag:String = String(availableRandom)
         ud.setValue(availRandomFlag, forKey: "availableRandom")
         
         ud.synchronize()
     }
+    
+    // add start [ENHANCE-A]
+    var sceneName:Dictionary<Int, String> = [1: "GND" , 2: "HVN" ]
+    
+    func tapStageSelect(sender:UILabel) {
+        let tempScene:Int = sender.tag / 100;
+        let tempStage:Int = sender.tag % 100;
+        
+        if (tempScene == 1) {
+            //if (tempStage == 1 && self.completeStage1_1 == 0) { return }
+            if (tempStage == 2 && self.completeStage1_1 == 0) { return }
+            if (tempStage == 3 && self.completeStage1_2 == 0) { return }
+            if (tempStage == 4 && self.completeStage1_3 == 0) { return }
+            if (tempStage == 5 && self.completeStage1_4 == 0) { return }
+            if (tempStage == 6 && self.completeStage1_5 == 0) { return }
+        }
+        if (tempScene == 2) {
+            if (tempStage == 1 && self.completeStage1_6 == 0) { return }
+            if (tempStage == 2 && self.completeStage2[0] == 0) { return }
+            if (tempStage == 3 && self.completeStage2[1] == 0) { return }
+            if (tempStage == 4 && self.completeStage2[2] == 0) { return }
+            if (tempStage == 5 && self.completeStage2[3] == 0) { return }
+            if (tempStage == 6 && self.completeStage2[4] == 0) { return }
+        }
+        
+        self.selectScene = sender.tag / 100;
+        self.selectStage = sender.tag % 100;
+        
+        
+        let str = SceneName(rawValue: self.selectScene)!.toString()
+        self.btnSceneSelect.setTitle("[\(str)] \(self.selectScene) - \(self.selectStage)", forState: UIControlState.Normal)
+        
+        let str2 = self.sceneName[self.selectScene]!;
+        self.btnSceneSelect.setTitle("[\(str2)] \(self.selectScene) - \(self.selectStage)", forState: UIControlState.Normal)
+        //self.dismissViewControllerAnimated(true, completion: nil)
+        
+        performSegueWithIdentifier("CallPlay", sender: self.btnPlay)
+    }
+    
+    func tapCreditSelect(sender:UILabel) {
+        performSegueWithIdentifier("CallStaffCredit", sender: nil)
+    }
+    
+    func tapTutorialSelect(sender:UILabel) {
+        performSegueWithIdentifier("CallTutorial", sender: nil)
+    }
+    
+    func tapScoreSelect(sender:UILabel) {
+        performSegueWithIdentifier("CallViewScore", sender: nil)
+    }
 
+    func tapAboutSelect(sender:UILabel) {
+        //performSegueWithIdentifier("CallAbout", sender: nil)
+    }
+    // add end [ENHANCE-A]
 }
 

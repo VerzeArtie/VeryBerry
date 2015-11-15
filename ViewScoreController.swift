@@ -14,9 +14,6 @@ class ViewScoreController:UIViewController {
     var parent: ViewController! = nil
 	var viewRandomMode: Bool = false
 
-	@IBOutlet var btnScene1: UIButton! // add [ENHANCE-A]
-	@IBOutlet var btnScene2: UIButton! // add [ENHANCE-A]
-	@IBOutlet var btnRandom: UIButton! // add [ENHANCE-A]
 	@IBOutlet var lblRankNumber: UILabel!
 	@IBOutlet var imgRankMedal: UIImageView!
 	@IBOutlet var lblRankScore: UILabel!
@@ -72,7 +69,7 @@ class ViewScoreController:UIViewController {
     
     func ViewSaveData(additional:String, scene:Int) {
         // ビルド環境にあるファイルを読み込むフォルダ
-        var ud: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let ud: NSUserDefaults = NSUserDefaults.standardUserDefaults()
 
 		// add start [ENHANCE-A]
 		var sceneStr:String = ""
@@ -129,11 +126,11 @@ class ViewScoreController:UIViewController {
         var sS:[Int] = [0, 0, 0, 0, 0]
         var bA:[Int] = [0, 0, 0, 0, 0]
         var bB:[Int] = [0, 0, 0, 0, 0]
-        if (score0 != "") { sS[0] = score0.toInt()!; bA[0] = bonusAList[0].toInt()!; bB[0] = bonusBList[0].toInt()!; }
-        if (score1 != "") { sS[1] = score1.toInt()!; bA[1] = bonusAList[1].toInt()!; bB[1] = bonusBList[1].toInt()!; }
-        if (score2 != "") { sS[2] = score2.toInt()!; bA[2] = bonusAList[2].toInt()!; bB[2] = bonusBList[2].toInt()!; }
-        if (score3 != "") { sS[3] = score3.toInt()!; bA[3] = bonusAList[3].toInt()!; bB[3] = bonusBList[3].toInt()!; }
-        if (score4 != "") { sS[4] = score4.toInt()!; bA[4] = bonusAList[4].toInt()!; bB[4] = bonusBList[4].toInt()!; }
+        if (score0 != "") { sS[0] = Int(score0)!; bA[0] = Int(bonusAList[0])!; bB[0] = Int(bonusBList[0])!; }
+        if (score1 != "") { sS[1] = Int(score1)!; bA[1] = Int(bonusAList[1])!; bB[1] = Int(bonusBList[1])!; }
+        if (score2 != "") { sS[2] = Int(score2)!; bA[2] = Int(bonusAList[2])!; bB[2] = Int(bonusBList[2])!; }
+        if (score3 != "") { sS[3] = Int(score3)!; bA[3] = Int(bonusAList[3])!; bB[3] = Int(bonusBList[3])!; }
+        if (score4 != "") { sS[4] = Int(score4)!; bA[4] = Int(bonusAList[4])!; bB[4] = Int(bonusBList[4])!; }
         
         // bubble sort
         for (var ii:Int = 0; ii < 4; ii++)
@@ -142,9 +139,9 @@ class ViewScoreController:UIViewController {
             {
                 if (sS[jj] > sS[ii])
                 {
-                    var tmp: Int = sS[jj]
-                    var tmp2: Int = bA[jj]
-                    var tmp3: Int = bB[jj]
+                    let tmp: Int = sS[jj]
+                    let tmp2: Int = bA[jj]
+                    let tmp3: Int = bB[jj]
                     sS[jj] = sS[ii]
                     bA[jj] = bA[ii]
                     bB[jj] = bB[ii]
@@ -227,9 +224,10 @@ class ViewScoreController:UIViewController {
 	// add end [ENHANCE-A]
 
     override func viewDidLoad() {
-        if (self.parent.availableRandom == 1) {
-            self.lblStageMode.hidden = false
-        }
+        // delete [ENHANCE-A]
+//        if (self.parent.availableRandom == 1) {
+//            self.lblStageMode.hidden = false
+//        }
         ViewSaveData("", scene:1)
         ViewSaveData("Random", scene:1)
         super.viewDidLoad()
@@ -244,7 +242,6 @@ class ViewScoreController:UIViewController {
     }
 
     override func viewDidLayoutSubviews() {
-        //println("viewDidLayoutSubviews");
         SetupObjectLayout()
     }
 
@@ -334,9 +331,9 @@ class ViewScoreController:UIViewController {
 
     }
 
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
-//    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-		if (self.parent.availableRandom != 0 && self.viewRandomMode == false) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+		// if (self.parent.availableRandom != 0 && self.viewRandomMode == false) { // delete [ENHANCE-A]
+        if (self.viewRandomMode == false) {
             self.viewRandomMode = true
 			self.lblRandomMode.hidden = false;
 			self.imgMedalRandom1.hidden = false;

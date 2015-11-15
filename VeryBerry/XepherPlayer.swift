@@ -31,20 +31,21 @@ class XepherPlayer: NSObject, AVAudioPlayerDelegate {
         if (self.player == nil)
         {
             let audioPath = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource(path as String, ofType: ext as String)!)
-            self.player = AVAudioPlayer(contentsOfURL: audioPath, error: nil)
+            do {
+            self.player = try AVAudioPlayer(contentsOfURL: audioPath)
+            } catch {
+                
+            }
+//            self.player = AVAudioPlayer(contentsOfURL: audioPath, fileTypeHint: nil)
             self.player.delegate = self
             self.player.prepareToPlay()
             self.player.numberOfLoops = -1
             
-            let aFileURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource(path as String, ofType: ext as String)!)
+            //let aFileURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource(path as String, ofType: ext as String)!)
             self.player.play()
             //        var error:OSStatus = AudioServicesCreateSystemSoundID(aFileURL, &aSoundID)
             //        //        if (aFileURL != nil)
             //        if (error != OSStatus(kAudioServicesNoError)) {
-            //            println("fail playmusic")
-            //        }
-            //        else
-            //        {
             //        }
         }
     }
