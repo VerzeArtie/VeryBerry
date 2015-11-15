@@ -492,24 +492,24 @@ class ViewController: UIViewController, ADBannerViewDelegate {
 
     func SetupObjectLayout() {
         // default iphone 6
-        var width = 225
-        var widthScore = 130
-        var height = 50
-        var dY11:CGFloat = 51; var dY12:CGFloat = 268; var dY13:CGFloat = 338; var dY14:CGFloat = 342;
-        var dY22:CGFloat = 268; var dY23:CGFloat = 338; var dY24:CGFloat = 342;
-        if (SCREEN_WIDTH == 736) { // maybe iPhone 6 plus
-            width = 260; widthScore = 130; height = 55;
-            dY11 = 57; dY12 = 296; dY13 = 373; dY14 = 378;
-            dY22 = 296; dY23 = 373; dY24 = 378;
-        } else if (SCREEN_WIDTH == 568) { // maybe iPhone 5S
-            width = 170; widthScore = 100; height = 44
-            dY11 = 44; dY12 = 228; dY13 = 288; dY14 = 292;
-            dY22 = 228;  dY23 = 288; dY24 = 292;
-        } else if (SCREEN_WIDTH == 480) { // maybe iPhone 4S
-            width = 130; widthScore = 85; height = 43;
-            dY11 = 44; dY12 = 228; dY13 = 288; dY14 = 292;
-            dY22 = 228; dY23 = 288; dY24 = 292;
-        }
+//        var width = 225
+//        var widthScore = 130
+//        var height = 50
+//        var dY11:CGFloat = 51; var dY12:CGFloat = 268; var dY13:CGFloat = 338; var dY14:CGFloat = 342;
+//        var dY22:CGFloat = 268; var dY23:CGFloat = 338; var dY24:CGFloat = 342;
+//        if (SCREEN_WIDTH == 736) { // maybe iPhone 6 plus
+//            width = 260; widthScore = 130; height = 55;
+//            dY11 = 57; dY12 = 296; dY13 = 373; dY14 = 378;
+//            dY22 = 296; dY23 = 373; dY24 = 378;
+//        } else if (SCREEN_WIDTH == 568) { // maybe iPhone 5S
+//            width = 170; widthScore = 100; height = 44
+//            dY11 = 44; dY12 = 228; dY13 = 288; dY14 = 292;
+//            dY22 = 228;  dY23 = 288; dY24 = 292;
+//        } else if (SCREEN_WIDTH == 480) { // maybe iPhone 4S
+//            width = 130; widthScore = 85; height = 43;
+//            dY11 = 44; dY12 = 228; dY13 = 288; dY14 = 292;
+//            dY22 = 228; dY23 = 288; dY24 = 292;
+//        }
 
         self.lblRandomStageNum.center = CGPointMake(ScaleLogic.RandomContinueLabel_X(self.SCREEN_WIDTH), ScaleLogic.RandomContinueLabel_Y(self.SCREEN_WIDTH))
         self.btnRandomContinueYes.center = CGPointMake(ScaleLogic.RandomContinueYes_X(self.SCREEN_WIDTH), ScaleLogic.RandomContinueYes_Y(self.SCREEN_WIDTH))
