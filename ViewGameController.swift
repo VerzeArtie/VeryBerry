@@ -650,7 +650,8 @@ class ViewGameController: UIViewController
 
         // UI操作: デバイスが傾いているとき、多少左右移動させる。
         if (imgMainObj.nowFreeze > 0) { // add [ENHANCE-A]
-            // フリーズでは、操作不可能とする。
+            // フリーズでは、操作不可能として、フリーズカウントを更新する。
+            imgMainObj.RefreshStatus(0);
         } else {
             // 横移動 // emu no
             if (data!.acceleration.y > 0.1)

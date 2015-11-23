@@ -1291,6 +1291,35 @@
 				<string>2.0</string>
 			</dict>
 		</dict>
+		<key>1430</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>bonusA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>170</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>2.0</string>
+			</dict>
+			<key>1</key>
+			<dict>
+				<key>name</key>
+				<string>bonusA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>140</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>2.0</string>
+			</dict>
+		</dict>
 		<key>1480</key>
 		<dict>
 			<key>0</key>
@@ -1314,6 +1343,35 @@
 				<string>0</string>
 				<key>y</key>
 				<string>40</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>2.0</string>
+			</dict>
+		</dict>
+		<key>1520</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>bonusA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>170</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>2.0</string>
+			</dict>
+			<key>1</key>
+			<dict>
+				<key>name</key>
+				<string>bonusA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>140</string>
 				<key>move</key>
 				<string>52</string>
 				<key>fixPattern</key>
@@ -1349,6 +1407,35 @@
 				<string>2.0</string>
 			</dict>
 		</dict>
+		<key>1640</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>bonusA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>170</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>2.0</string>
+			</dict>
+			<key>1</key>
+			<dict>
+				<key>name</key>
+				<string>bonusA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>140</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>2.0</string>
+			</dict>
+		</dict>
 		<key>1680</key>
 		<dict>
 			<key>0</key>
@@ -1378,6 +1465,35 @@
 				<string>2.0</string>
 			</dict>
 		</dict>
+		<key>1720</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>bonusA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>170</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>2.0</string>
+			</dict>
+			<key>1</key>
+			<dict>
+				<key>name</key>
+				<string>bonusA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>140</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>2.0</string>
+			</dict>
+		</dict>
 		<key>1780</key>
 		<dict>
 			<key>0</key>
@@ -1401,6 +1517,35 @@
 				<string>0</string>
 				<key>y</key>
 				<string>40</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>2.0</string>
+			</dict>
+		</dict>
+		<key>1820</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>bonusA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>170</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>2.0</string>
+			</dict>
+			<key>1</key>
+			<dict>
+				<key>name</key>
+				<string>bonusA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>140</string>
 				<key>move</key>
 				<string>52</string>
 				<key>fixPattern</key>
@@ -1667,6 +1812,51 @@
 				<key>fixPattern</key>
 				<string>1.5</string>
 			</dict>
+			<key>2</key>
+			<dict>
+				<key>name</key>
+				<string>bonusA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>180</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>2.0</string>
+			</dict>
+		</dict>
+		<key>2200</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>bonusA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>180</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>2.0</string>
+			</dict>
+		</dict>
+		<key>2220</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>bonusA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>180</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>2.0</string>
+			</dict>
 		</dict>
 		<key>2260</key>
 		<dict>
@@ -1811,6 +2001,51 @@
 				<string>52</string>
 				<key>fixPattern</key>
 				<string>1.5</string>
+			</dict>
+			<key>2</key>
+			<dict>
+				<key>name</key>
+				<string>bonusA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>180</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>2.0</string>
+			</dict>
+		</dict>
+		<key>2440</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>bonusA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>180</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>2.0</string>
+			</dict>
+		</dict>
+		<key>2460</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>bonusA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>180</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>2.0</string>
 			</dict>
 		</dict>
 		<key>2500</key>
@@ -1972,6 +2207,51 @@
 				<string>52</string>
 				<key>fixPattern</key>
 				<string>1.5</string>
+			</dict>
+			<key>2</key>
+			<dict>
+				<key>name</key>
+				<string>bonusA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>180</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>2.0</string>
+			</dict>
+		</dict>
+		<key>2700</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>bonusA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>180</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>2.0</string>
+			</dict>
+		</dict>
+		<key>2720</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>bonusA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>180</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>2.0</string>
 			</dict>
 		</dict>
 		<key>2800</key>
@@ -3910,6 +4190,21 @@
 			<key>1</key>
 			<dict>
 				<key>name</key>
+				<string>bonusA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>180</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>2.0</string>
+				<key>fixPattern2</key>
+				<string>0.0</string>
+			</dict>
+			<key>2</key>
+			<dict>
+				<key>name</key>
 				<string>enemyA</string>
 				<key>x</key>
 				<string>0</string>
@@ -3955,6 +4250,21 @@
 				<string>0.0</string>
 			</dict>
 			<key>1</key>
+			<dict>
+				<key>name</key>
+				<string>bonusA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>180</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>2.0</string>
+				<key>fixPattern2</key>
+				<string>0.0</string>
+			</dict>
+			<key>2</key>
 			<dict>
 				<key>name</key>
 				<string>enemyA</string>
@@ -4022,6 +4332,21 @@
 			<key>1</key>
 			<dict>
 				<key>name</key>
+				<string>bonusA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>180</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>2.0</string>
+				<key>fixPattern2</key>
+				<string>0.0</string>
+			</dict>
+			<key>2</key>
+			<dict>
+				<key>name</key>
 				<string>enemyA</string>
 				<key>x</key>
 				<string>0</string>
@@ -4069,6 +4394,21 @@
 			<key>1</key>
 			<dict>
 				<key>name</key>
+				<string>bonusA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>180</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>2.0</string>
+				<key>fixPattern2</key>
+				<string>0.0</string>
+			</dict>
+			<key>2</key>
+			<dict>
+				<key>name</key>
 				<string>enemyA</string>
 				<key>x</key>
 				<string>0</string>
@@ -4114,6 +4454,21 @@
 				<string>0.0</string>
 			</dict>
 			<key>1</key>
+			<dict>
+				<key>name</key>
+				<string>bonusA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>180</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>2.0</string>
+				<key>fixPattern2</key>
+				<string>0.0</string>
+			</dict>
+			<key>2</key>
 			<dict>
 				<key>name</key>
 				<string>enemyA</string>
@@ -4174,6 +4529,21 @@
 				<key>fixPattern2</key>
 				<string>0.0</string>
 			</dict>
+			<key>3</key>
+			<dict>
+				<key>name</key>
+				<string>bonusA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>260</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>2.0</string>
+				<key>fixPattern2</key>
+				<string>0.0</string>
+			</dict>
 		</dict>
 		<key>1160</key>
 		<dict>
@@ -4208,6 +4578,21 @@
 				<string>0.0</string>
 			</dict>
 			<key>2</key>
+			<dict>
+				<key>name</key>
+				<string>bonusA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>160</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>2.0</string>
+				<key>fixPattern2</key>
+				<string>0.0</string>
+			</dict>
+			<key>3</key>
 			<dict>
 				<key>name</key>
 				<string>enemyB</string>
@@ -4258,6 +4643,21 @@
 			<key>2</key>
 			<dict>
 				<key>name</key>
+				<string>bonusA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>160</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>2.0</string>
+				<key>fixPattern2</key>
+				<string>0.0</string>
+			</dict>
+			<key>3</key>
+			<dict>
+				<key>name</key>
 				<string>enemyB</string>
 				<key>x</key>
 				<string>0</string>
@@ -4291,6 +4691,21 @@
 			<key>1</key>
 			<dict>
 				<key>name</key>
+				<string>bonusB</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>60</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>2.0</string>
+				<key>fixPattern2</key>
+				<string>0.0</string>
+			</dict>
+			<key>2</key>
+			<dict>
+				<key>name</key>
 				<string>enemyB</string>
 				<key>x</key>
 				<string>0</string>
@@ -4303,7 +4718,7 @@
 				<key>fixPattern2</key>
 				<string>0.0</string>
 			</dict>
-			<key>2</key>
+			<key>3</key>
 			<dict>
 				<key>name</key>
 				<string>cloudC</string>
@@ -4311,6 +4726,21 @@
 				<string>0</string>
 				<key>y</key>
 				<string>230</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>2.0</string>
+				<key>fixPattern2</key>
+				<string>0.0</string>
+			</dict>
+			<key>4</key>
+			<dict>
+				<key>name</key>
+				<string>bonusA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>260</string>
 				<key>move</key>
 				<string>52</string>
 				<key>fixPattern</key>
@@ -4366,6 +4796,21 @@
 				<key>fixPattern2</key>
 				<string>0.0</string>
 			</dict>
+			<key>3</key>
+			<dict>
+				<key>name</key>
+				<string>bonusA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>260</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>2.0</string>
+				<key>fixPattern2</key>
+				<string>0.0</string>
+			</dict>
 		</dict>
 		<key>1480</key>
 		<dict>
@@ -4387,6 +4832,21 @@
 			<key>1</key>
 			<dict>
 				<key>name</key>
+				<string>bonusA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>60</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>2.0</string>
+				<key>fixPattern2</key>
+				<string>0.0</string>
+			</dict>
+			<key>2</key>
+			<dict>
+				<key>name</key>
 				<string>enemyB</string>
 				<key>x</key>
 				<string>0</string>
@@ -4399,7 +4859,7 @@
 				<key>fixPattern2</key>
 				<string>0.0</string>
 			</dict>
-			<key>2</key>
+			<key>3</key>
 			<dict>
 				<key>name</key>
 				<string>enemyB</string>
@@ -4450,6 +4910,21 @@
 			<key>2</key>
 			<dict>
 				<key>name</key>
+				<string>bonusA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>160</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>2.0</string>
+				<key>fixPattern2</key>
+				<string>0.0</string>
+			</dict>
+			<key>3</key>
+			<dict>
+				<key>name</key>
 				<string>enemyB</string>
 				<key>x</key>
 				<string>0</string>
@@ -4483,6 +4958,21 @@
 			<key>1</key>
 			<dict>
 				<key>name</key>
+				<string>bonusA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>70</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>2.0</string>
+				<key>fixPattern2</key>
+				<string>0.0</string>
+			</dict>
+			<key>2</key>
+			<dict>
+				<key>name</key>
 				<string>enemyB</string>
 				<key>x</key>
 				<string>0</string>
@@ -4495,7 +4985,7 @@
 				<key>fixPattern2</key>
 				<string>0.0</string>
 			</dict>
-			<key>2</key>
+			<key>3</key>
 			<dict>
 				<key>name</key>
 				<string>enemyB</string>
@@ -4558,6 +5048,21 @@
 				<key>fixPattern2</key>
 				<string>0.0</string>
 			</dict>
+			<key>3</key>
+			<dict>
+				<key>name</key>
+				<string>bonusA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>250</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>2.0</string>
+				<key>fixPattern2</key>
+				<string>0.0</string>
+			</dict>
 		</dict>
 		<key>1800</key>
 		<dict>
@@ -4592,6 +5097,21 @@
 				<string>0.0</string>
 			</dict>
 			<key>2</key>
+			<dict>
+				<key>name</key>
+				<string>bonusA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>160</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>2.0</string>
+				<key>fixPattern2</key>
+				<string>0.0</string>
+			</dict>
+			<key>3</key>
 			<dict>
 				<key>name</key>
 				<string>enemyB</string>
@@ -5318,7 +5838,7 @@
 				<key>x</key>
 				<string>0</string>
 				<key>y</key>
-				<string>30</string>
+				<string>80</string>
 				<key>move</key>
 				<string>52</string>
 				<key>fixPattern</key>
@@ -5333,7 +5853,7 @@
 				<key>x</key>
 				<string>0</string>
 				<key>y</key>
-				<string>60</string>
+				<string>110</string>
 				<key>move</key>
 				<string>52</string>
 				<key>fixPattern</key>
@@ -5348,7 +5868,7 @@
 				<key>x</key>
 				<string>0</string>
 				<key>y</key>
-				<string>90</string>
+				<string>140</string>
 				<key>move</key>
 				<string>52</string>
 				<key>fixPattern</key>
@@ -6254,6 +6774,24 @@
 				<string>0</string>
 			</dict>
 		</dict>
+		<key>3360</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>cloudC</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>0</string>
+				<key>random</key>
+				<string>0</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>1.0</string>
+			</dict>
+		</dict>
 		<key>3380</key>
 		<dict>
 			<key>0</key>
@@ -6267,7 +6805,27 @@
 				<key>random</key>
 				<string>0</string>
 				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>1.0</string>
+			</dict>
+		</dict>
+		<key>3400</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>cloudC</string>
+				<key>x</key>
 				<string>0</string>
+				<key>y</key>
+				<string>0</string>
+				<key>random</key>
+				<string>0</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>1.0</string>
 			</dict>
 		</dict>
 		<key>3420</key>
@@ -6283,7 +6841,27 @@
 				<key>random</key>
 				<string>0</string>
 				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>1.0</string>
+			</dict>
+		</dict>
+		<key>3440</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>cloudC</string>
+				<key>x</key>
 				<string>0</string>
+				<key>y</key>
+				<string>0</string>
+				<key>random</key>
+				<string>0</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>1.0</string>
 			</dict>
 		</dict>
 		<key>3460</key>
@@ -6299,7 +6877,27 @@
 				<key>random</key>
 				<string>0</string>
 				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>1.0</string>
+			</dict>
+		</dict>
+		<key>3480</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>cloudC</string>
+				<key>x</key>
 				<string>0</string>
+				<key>y</key>
+				<string>0</string>
+				<key>random</key>
+				<string>0</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>1.0</string>
 			</dict>
 		</dict>
 		<key>3500</key>
@@ -6315,7 +6913,27 @@
 				<key>random</key>
 				<string>0</string>
 				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>1.0</string>
+			</dict>
+		</dict>
+		<key>3520</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>cloudC</string>
+				<key>x</key>
 				<string>0</string>
+				<key>y</key>
+				<string>0</string>
+				<key>random</key>
+				<string>0</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>1.0</string>
 			</dict>
 		</dict>
 		<key>3540</key>
@@ -6331,7 +6949,27 @@
 				<key>random</key>
 				<string>0</string>
 				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>1.0</string>
+			</dict>
+		</dict>
+		<key>3560</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>cloudC</string>
+				<key>x</key>
 				<string>0</string>
+				<key>y</key>
+				<string>0</string>
+				<key>random</key>
+				<string>0</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>1.0</string>
 			</dict>
 		</dict>
 		<key>3580</key>
@@ -6347,7 +6985,27 @@
 				<key>random</key>
 				<string>0</string>
 				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>1.0</string>
+			</dict>
+		</dict>
+		<key>3600</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>cloudC</string>
+				<key>x</key>
 				<string>0</string>
+				<key>y</key>
+				<string>0</string>
+				<key>random</key>
+				<string>0</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>1.0</string>
 			</dict>
 		</dict>
 		<key>3620</key>
@@ -6363,7 +7021,27 @@
 				<key>random</key>
 				<string>0</string>
 				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>1.0</string>
+			</dict>
+		</dict>
+		<key>3640</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>cloudC</string>
+				<key>x</key>
 				<string>0</string>
+				<key>y</key>
+				<string>0</string>
+				<key>random</key>
+				<string>0</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>1.0</string>
 			</dict>
 		</dict>
 		<key>3660</key>
@@ -6379,7 +7057,27 @@
 				<key>random</key>
 				<string>0</string>
 				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>1.0</string>
+			</dict>
+		</dict>
+		<key>3680</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>cloudC</string>
+				<key>x</key>
 				<string>0</string>
+				<key>y</key>
+				<string>0</string>
+				<key>random</key>
+				<string>0</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>1.0</string>
 			</dict>
 		</dict>
 		<key>3700</key>
@@ -6395,7 +7093,225 @@
 				<key>random</key>
 				<string>0</string>
 				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>1.0</string>
+			</dict>
+		</dict>
+		<key>3720</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>cloudC</string>
+				<key>x</key>
 				<string>0</string>
+				<key>y</key>
+				<string>0</string>
+				<key>random</key>
+				<string>0</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>1.0</string>
+			</dict>
+		</dict>
+		<key>3740</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>cloudC</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>0</string>
+				<key>random</key>
+				<string>0</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>1.0</string>
+			</dict>
+		</dict>
+		<key>3760</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>cloudC</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>0</string>
+				<key>random</key>
+				<string>0</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>1.0</string>
+			</dict>
+		</dict>
+		<key>3780</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>cloudC</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>0</string>
+				<key>random</key>
+				<string>0</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>1.0</string>
+			</dict>
+		</dict>
+		<key>3800</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>cloudC</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>0</string>
+				<key>random</key>
+				<string>0</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>1.0</string>
+			</dict>
+		</dict>
+		<key>3820</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>cloudC</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>0</string>
+				<key>random</key>
+				<string>0</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>1.0</string>
+			</dict>
+		</dict>
+		<key>3840</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>cloudC</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>0</string>
+				<key>random</key>
+				<string>0</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>1.0</string>
+			</dict>
+		</dict>
+		<key>3860</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>cloudC</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>0</string>
+				<key>random</key>
+				<string>0</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>1.0</string>
+			</dict>
+		</dict>
+		<key>3880</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>cloudC</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>0</string>
+				<key>random</key>
+				<string>0</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>1.0</string>
+			</dict>
+		</dict>
+		<key>3900</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>cloudC</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>0</string>
+				<key>random</key>
+				<string>0</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>1.0</string>
+			</dict>
+		</dict>
+		<key>3920</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>cloudC</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>0</string>
+				<key>random</key>
+				<string>0</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>1.0</string>
+			</dict>
+		</dict>
+		<key>3940</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>cloudC</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>0</string>
+				<key>random</key>
+				<string>0</string>
+				<key>move</key>
+				<string>52</string>
+				<key>fixPattern</key>
+				<string>1.0</string>
 			</dict>
 		</dict>
 	</dict>
@@ -20369,7 +21285,7 @@
 				<key>x</key>
 				<string>0</string>
 				<key>y</key>
-				<string>160</string>
+				<string>165</string>
 				<key>random</key>
 				<string>0</string>
 				<key>move</key>
@@ -20384,7 +21300,7 @@
 				<key>x</key>
 				<string>0</string>
 				<key>y</key>
-				<string>60</string>
+				<string>55</string>
 				<key>random</key>
 				<string>0</string>
 				<key>move</key>
@@ -20546,7 +21462,7 @@
 				<key>x</key>
 				<string>0</string>
 				<key>y</key>
-				<string>160</string>
+				<string>165</string>
 				<key>random</key>
 				<string>0</string>
 				<key>move</key>
@@ -20561,7 +21477,7 @@
 				<key>x</key>
 				<string>0</string>
 				<key>y</key>
-				<string>60</string>
+				<string>55</string>
 				<key>random</key>
 				<string>0</string>
 				<key>move</key>
@@ -20723,7 +21639,7 @@
 				<key>x</key>
 				<string>0</string>
 				<key>y</key>
-				<string>160</string>
+				<string>165</string>
 				<key>random</key>
 				<string>0</string>
 				<key>move</key>
@@ -20738,7 +21654,7 @@
 				<key>x</key>
 				<string>0</string>
 				<key>y</key>
-				<string>60</string>
+				<string>55</string>
 				<key>random</key>
 				<string>0</string>
 				<key>move</key>
@@ -20900,7 +21816,7 @@
 				<key>x</key>
 				<string>0</string>
 				<key>y</key>
-				<string>160</string>
+				<string>165</string>
 				<key>random</key>
 				<string>0</string>
 				<key>move</key>
@@ -20915,7 +21831,7 @@
 				<key>x</key>
 				<string>0</string>
 				<key>y</key>
-				<string>60</string>
+				<string>55</string>
 				<key>random</key>
 				<string>0</string>
 				<key>move</key>
@@ -21077,7 +21993,7 @@
 				<key>x</key>
 				<string>0</string>
 				<key>y</key>
-				<string>160</string>
+				<string>165</string>
 				<key>random</key>
 				<string>0</string>
 				<key>move</key>
@@ -21092,7 +22008,7 @@
 				<key>x</key>
 				<string>0</string>
 				<key>y</key>
-				<string>60</string>
+				<string>55</string>
 				<key>random</key>
 				<string>0</string>
 				<key>move</key>
@@ -21254,7 +22170,7 @@
 				<key>x</key>
 				<string>0</string>
 				<key>y</key>
-				<string>160</string>
+				<string>165</string>
 				<key>random</key>
 				<string>0</string>
 				<key>move</key>
@@ -21269,7 +22185,7 @@
 				<key>x</key>
 				<string>0</string>
 				<key>y</key>
-				<string>60</string>
+				<string>55</string>
 				<key>random</key>
 				<string>0</string>
 				<key>move</key>
@@ -25300,6 +26216,22 @@
 				<string>2.5</string>
 			</dict>
 		</dict>
+		<key>2310</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
+			</dict>
+		</dict>
 		<key>2320</key>
 		<dict>
 			<key>0</key>
@@ -25314,6 +26246,22 @@
 				<string>52</string>
 				<key>fixPattern</key>
 				<string>2.5</string>
+			</dict>
+		</dict>
+		<key>2330</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
 			</dict>
 		</dict>
 		<key>2340</key>
@@ -25332,6 +26280,54 @@
 				<string>2.5</string>
 			</dict>
 		</dict>
+		<key>2350</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
+			</dict>
+		</dict>
+		<key>2370</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
+			</dict>
+		</dict>
+		<key>2390</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
+			</dict>
+		</dict>
 		<key>2400</key>
 		<dict>
 			<key>0</key>
@@ -25346,6 +26342,22 @@
 				<string>52</string>
 				<key>fixPattern</key>
 				<string>2.5</string>
+			</dict>
+		</dict>
+		<key>2410</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
 			</dict>
 		</dict>
 		<key>2420</key>
@@ -25364,6 +26376,22 @@
 				<string>2.5</string>
 			</dict>
 		</dict>
+		<key>2430</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
+			</dict>
+		</dict>
 		<key>2440</key>
 		<dict>
 			<key>0</key>
@@ -25378,6 +26406,54 @@
 				<string>52</string>
 				<key>fixPattern</key>
 				<string>2.5</string>
+			</dict>
+		</dict>
+		<key>2450</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
+			</dict>
+		</dict>
+		<key>2470</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
+			</dict>
+		</dict>
+		<key>2490</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
 			</dict>
 		</dict>
 		<key>2500</key>
@@ -25396,6 +26472,22 @@
 				<string>2.5</string>
 			</dict>
 		</dict>
+		<key>2510</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
+			</dict>
+		</dict>
 		<key>2520</key>
 		<dict>
 			<key>0</key>
@@ -25410,6 +26502,22 @@
 				<string>52</string>
 				<key>fixPattern</key>
 				<string>2.5</string>
+			</dict>
+		</dict>
+		<key>2530</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
 			</dict>
 		</dict>
 		<key>2540</key>
@@ -25428,6 +26536,54 @@
 				<string>2.5</string>
 			</dict>
 		</dict>
+		<key>2550</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
+			</dict>
+		</dict>
+		<key>2570</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
+			</dict>
+		</dict>
+		<key>2590</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
+			</dict>
+		</dict>
 		<key>2600</key>
 		<dict>
 			<key>0</key>
@@ -25442,6 +26598,22 @@
 				<string>52</string>
 				<key>fixPattern</key>
 				<string>2.5</string>
+			</dict>
+		</dict>
+		<key>2610</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
 			</dict>
 		</dict>
 		<key>2620</key>
@@ -25460,6 +26632,22 @@
 				<string>2.5</string>
 			</dict>
 		</dict>
+		<key>2630</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
+			</dict>
+		</dict>
 		<key>2640</key>
 		<dict>
 			<key>0</key>
@@ -25474,6 +26662,54 @@
 				<string>52</string>
 				<key>fixPattern</key>
 				<string>2.5</string>
+			</dict>
+		</dict>
+		<key>2650</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
+			</dict>
+		</dict>
+		<key>2670</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
+			</dict>
+		</dict>
+		<key>2690</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
 			</dict>
 		</dict>
 		<key>2700</key>
@@ -25492,6 +26728,22 @@
 				<string>2.5</string>
 			</dict>
 		</dict>
+		<key>2710</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
+			</dict>
+		</dict>
 		<key>2720</key>
 		<dict>
 			<key>0</key>
@@ -25506,6 +26758,22 @@
 				<string>52</string>
 				<key>fixPattern</key>
 				<string>2.5</string>
+			</dict>
+		</dict>
+		<key>2730</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
 			</dict>
 		</dict>
 		<key>2740</key>
@@ -25524,6 +26792,54 @@
 				<string>2.5</string>
 			</dict>
 		</dict>
+		<key>2750</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
+			</dict>
+		</dict>
+		<key>2770</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
+			</dict>
+		</dict>
+		<key>2790</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
+			</dict>
+		</dict>
 		<key>2800</key>
 		<dict>
 			<key>0</key>
@@ -25538,6 +26854,22 @@
 				<string>52</string>
 				<key>fixPattern</key>
 				<string>2.5</string>
+			</dict>
+		</dict>
+		<key>2810</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
 			</dict>
 		</dict>
 		<key>2820</key>
@@ -25556,6 +26888,22 @@
 				<string>2.5</string>
 			</dict>
 		</dict>
+		<key>2830</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
+			</dict>
+		</dict>
 		<key>2840</key>
 		<dict>
 			<key>0</key>
@@ -25570,6 +26918,54 @@
 				<string>52</string>
 				<key>fixPattern</key>
 				<string>2.5</string>
+			</dict>
+		</dict>
+		<key>2850</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
+			</dict>
+		</dict>
+		<key>2870</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
+			</dict>
+		</dict>
+		<key>2890</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
 			</dict>
 		</dict>
 		<key>2900</key>
@@ -25588,6 +26984,22 @@
 				<string>2.5</string>
 			</dict>
 		</dict>
+		<key>2910</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
+			</dict>
+		</dict>
 		<key>2920</key>
 		<dict>
 			<key>0</key>
@@ -25602,6 +27014,22 @@
 				<string>52</string>
 				<key>fixPattern</key>
 				<string>2.5</string>
+			</dict>
+		</dict>
+		<key>2930</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
 			</dict>
 		</dict>
 		<key>2940</key>
@@ -25620,6 +27048,54 @@
 				<string>2.5</string>
 			</dict>
 		</dict>
+		<key>2950</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
+			</dict>
+		</dict>
+		<key>2970</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
+			</dict>
+		</dict>
+		<key>2990</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
+			</dict>
+		</dict>
 		<key>3000</key>
 		<dict>
 			<key>0</key>
@@ -25634,6 +27110,22 @@
 				<string>52</string>
 				<key>fixPattern</key>
 				<string>2.5</string>
+			</dict>
+		</dict>
+		<key>3010</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
 			</dict>
 		</dict>
 		<key>3020</key>
@@ -25652,6 +27144,22 @@
 				<string>2.5</string>
 			</dict>
 		</dict>
+		<key>3030</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
+			</dict>
+		</dict>
 		<key>3040</key>
 		<dict>
 			<key>0</key>
@@ -25666,6 +27174,54 @@
 				<string>52</string>
 				<key>fixPattern</key>
 				<string>2.5</string>
+			</dict>
+		</dict>
+		<key>3050</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
+			</dict>
+		</dict>
+		<key>3070</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
+			</dict>
+		</dict>
+		<key>3090</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
 			</dict>
 		</dict>
 		<key>3100</key>
@@ -25684,6 +27240,22 @@
 				<string>2.5</string>
 			</dict>
 		</dict>
+		<key>3110</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
+			</dict>
+		</dict>
 		<key>3120</key>
 		<dict>
 			<key>0</key>
@@ -25698,6 +27270,22 @@
 				<string>52</string>
 				<key>fixPattern</key>
 				<string>2.5</string>
+			</dict>
+		</dict>
+		<key>3130</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
 			</dict>
 		</dict>
 		<key>3140</key>
@@ -25716,6 +27304,54 @@
 				<string>2.5</string>
 			</dict>
 		</dict>
+		<key>3150</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
+			</dict>
+		</dict>
+		<key>3170</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
+			</dict>
+		</dict>
+		<key>3190</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
+			</dict>
+		</dict>
 		<key>3200</key>
 		<dict>
 			<key>0</key>
@@ -25730,6 +27366,22 @@
 				<string>52</string>
 				<key>fixPattern</key>
 				<string>2.5</string>
+			</dict>
+		</dict>
+		<key>3210</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
 			</dict>
 		</dict>
 		<key>3220</key>
@@ -25748,6 +27400,22 @@
 				<string>2.5</string>
 			</dict>
 		</dict>
+		<key>3230</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
+			</dict>
+		</dict>
 		<key>3240</key>
 		<dict>
 			<key>0</key>
@@ -25762,6 +27430,54 @@
 				<string>52</string>
 				<key>fixPattern</key>
 				<string>2.5</string>
+			</dict>
+		</dict>
+		<key>3250</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
+			</dict>
+		</dict>
+		<key>3270</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
+			</dict>
+		</dict>
+		<key>3290</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
 			</dict>
 		</dict>
 		<key>3300</key>
@@ -25780,6 +27496,22 @@
 				<string>2.5</string>
 			</dict>
 		</dict>
+		<key>3310</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
+			</dict>
+		</dict>
 		<key>3320</key>
 		<dict>
 			<key>0</key>
@@ -25794,6 +27526,22 @@
 				<string>52</string>
 				<key>fixPattern</key>
 				<string>2.5</string>
+			</dict>
+		</dict>
+		<key>3330</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
 			</dict>
 		</dict>
 		<key>3340</key>
@@ -25812,6 +27560,54 @@
 				<string>2.5</string>
 			</dict>
 		</dict>
+		<key>3350</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
+			</dict>
+		</dict>
+		<key>3370</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
+			</dict>
+		</dict>
+		<key>3390</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
+			</dict>
+		</dict>
 		<key>3400</key>
 		<dict>
 			<key>0</key>
@@ -25826,6 +27622,22 @@
 				<string>52</string>
 				<key>fixPattern</key>
 				<string>2.5</string>
+			</dict>
+		</dict>
+		<key>3410</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
 			</dict>
 		</dict>
 		<key>3420</key>
@@ -25844,6 +27656,22 @@
 				<string>2.5</string>
 			</dict>
 		</dict>
+		<key>3430</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
+			</dict>
+		</dict>
 		<key>3440</key>
 		<dict>
 			<key>0</key>
@@ -25858,6 +27686,54 @@
 				<string>52</string>
 				<key>fixPattern</key>
 				<string>2.5</string>
+			</dict>
+		</dict>
+		<key>3450</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
+			</dict>
+		</dict>
+		<key>3470</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
+			</dict>
+		</dict>
+		<key>3490</key>
+		<dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>enemyA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>30</string>
+				<key>random</key>
+				<string>230</string>
+				<key>move</key>
+				<string>14</string>
 			</dict>
 		</dict>
 		<key>3500</key>
@@ -27508,6 +29384,19 @@
 			<key>2</key>
 			<dict>
 				<key>name</key>
+				<string>bonusA</string>
+				<key>x</key>
+				<string>200</string>
+				<key>y</key>
+				<string>350</string>
+				<key>fixPattern</key>
+				<string>250</string>
+				<key>move</key>
+				<string>60</string>
+			</dict>
+			<key>3</key>
+			<dict>
+				<key>name</key>
 				<string>enemyF</string>
 				<key>x</key>
 				<string>300</string>
@@ -27518,7 +29407,7 @@
 				<key>move</key>
 				<string>60</string>
 			</dict>
-			<key>3</key>
+			<key>4</key>
 			<dict>
 				<key>name</key>
 				<string>enemyF</string>
@@ -27624,6 +29513,19 @@
 			<key>2</key>
 			<dict>
 				<key>name</key>
+				<string>bonusA</string>
+				<key>x</key>
+				<string>200</string>
+				<key>y</key>
+				<string>350</string>
+				<key>fixPattern</key>
+				<string>250</string>
+				<key>move</key>
+				<string>60</string>
+			</dict>
+			<key>3</key>
+			<dict>
+				<key>name</key>
 				<string>enemyF</string>
 				<key>x</key>
 				<string>300</string>
@@ -27634,7 +29536,7 @@
 				<key>move</key>
 				<string>60</string>
 			</dict>
-			<key>3</key>
+			<key>4</key>
 			<dict>
 				<key>name</key>
 				<string>enemyF</string>
@@ -27807,11 +29709,11 @@
 			<key>0</key>
 			<dict>
 				<key>name</key>
-				<string>enemyB</string>
+				<string>bonusA</string>
 				<key>x</key>
 				<string>0</string>
 				<key>y</key>
-				<string>140</string>
+				<string>210</string>
 				<key>move</key>
 				<string>14</string>
 			</dict>
@@ -27822,11 +29724,22 @@
 				<key>x</key>
 				<string>0</string>
 				<key>y</key>
-				<string>90</string>
+				<string>140</string>
 				<key>move</key>
 				<string>14</string>
 			</dict>
 			<key>2</key>
+			<dict>
+				<key>name</key>
+				<string>enemyB</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>90</string>
+				<key>move</key>
+				<string>14</string>
+			</dict>
+			<key>3</key>
 			<dict>
 				<key>name</key>
 				<string>enemyB</string>
@@ -27870,6 +29783,17 @@
 				<string>0</string>
 				<key>y</key>
 				<string>140</string>
+				<key>move</key>
+				<string>14</string>
+			</dict>
+			<key>3</key>
+			<dict>
+				<key>name</key>
+				<string>bonusA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>70</string>
 				<key>move</key>
 				<string>14</string>
 			</dict>
@@ -27951,10 +29875,34 @@
 				<key>move</key>
 				<string>14</string>
 			</dict>
+			<key>3</key>
+			<dict>
+				<key>name</key>
+				<string>bonusA</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>80</string>
+				<key>move</key>
+				<string>14</string>
+			</dict>
 		</dict>
 		<key>1880</key>
 		<dict>
 			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>bonusB</string>
+				<key>x</key>
+				<string>0</string>
+				<key>y</key>
+				<string>350</string>
+				<key>fixPattern</key>
+				<string>60</string>
+				<key>move</key>
+				<string>60</string>
+			</dict>
+			<key>1</key>
 			<dict>
 				<key>name</key>
 				<string>enemyF</string>
@@ -27967,7 +29915,7 @@
 				<key>move</key>
 				<string>60</string>
 			</dict>
-			<key>1</key>
+			<key>2</key>
 			<dict>
 				<key>name</key>
 				<string>enemyF</string>
@@ -27980,7 +29928,7 @@
 				<key>move</key>
 				<string>60</string>
 			</dict>
-			<key>2</key>
+			<key>3</key>
 			<dict>
 				<key>name</key>
 				<string>enemyF</string>
@@ -27993,7 +29941,7 @@
 				<key>move</key>
 				<string>60</string>
 			</dict>
-			<key>3</key>
+			<key>4</key>
 			<dict>
 				<key>name</key>
 				<string>enemyF</string>
@@ -28006,7 +29954,7 @@
 				<key>move</key>
 				<string>60</string>
 			</dict>
-			<key>4</key>
+			<key>5</key>
 			<dict>
 				<key>name</key>
 				<string>enemyF</string>
@@ -31153,22 +33101,6 @@
 				<string>52</string>
 				<key>fixPattern</key>
 				<string>1.0</string>
-			</dict>
-		</dict>
-		<key>9999</key>
-		<dict>
-			<key>0</key>
-			<dict>
-				<key>name</key>
-				<string>enemyF</string>
-				<key>x</key>
-				<string>-70</string>
-				<key>y</key>
-				<string>350</string>
-				<key>random</key>
-				<string>0</string>
-				<key>move</key>
-				<string>61</string>
 			</dict>
 		</dict>
 	</dict>

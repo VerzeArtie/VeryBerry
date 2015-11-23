@@ -129,7 +129,7 @@ class ViewController: UIViewController, ADBannerViewDelegate {
     var progressStage2_4:[Int] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     var progressStage2_5:[Int] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     var progressStage2_6:[Int] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-    var completeStage2:[Int] = [0, 0, 0, 0, 0, 0]
+    var completeStage2:[Int] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     var imgBerryFreeze01: UIImage! = nil
     var imgCloudC: [UIImage] = [];
     var imgKintoun: [UIImage] = [];
@@ -583,6 +583,7 @@ class ViewController: UIViewController, ADBannerViewDelegate {
         // ビルド環境にあるファイルを読み込むフォルダ
         let ud: NSUserDefaults = NSUserDefaults.standardUserDefaults()
 		let MAX_NUM = 9;
+        let MAX_STAGE = 6;
         
         let fixString:String = "progressStage";
         let data1_1_1:String? = ud.valueForKey("progressStage1_1_1") as? String
@@ -671,8 +672,10 @@ class ViewController: UIViewController, ADBannerViewDelegate {
             
             let data6:String? = ud.valueForKey("\(fixString)2_6_\(ii)") as? String
             if (data6 != nil && data6! == "1") { self.progressStage2_6[ii] = 1 }
-            
-            let datacomp:String? = ud.valueForKey("completeStage2_\(ii)") as? String
+        }
+        
+        for (var ii = 0; ii <= MAX_STAGE; ii++) {
+            let datacomp:String? = ud.valueForKey("completeStage2_\(ii+1)") as? String
             if (datacomp != nil && datacomp! == "1") { self.completeStage2[ii] = 1 }
         }
 		// add end (ENHANCE-A)

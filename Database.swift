@@ -18,7 +18,7 @@ class Database {
     class var MAX_STAGE_NUM: Int { get { return 6; } } // add [ENHANCE-A]
     class var Attack: String { get { return "Attack" } }
 
-    class var STAGE:String { get { return "Stage" } } // add (ENHANCE-A)
+    //class var STAGE:String { get { return "Stage" } } // add (ENHANCE-A)
     //class var STAGE_1:String { get { return "Stage1" } } // 1-1 delete (ENHANCE-A)
     //class var STAGE_2:String { get { return "Stage2" } } // 1-2 delete (ENHANCE-A)
     //class var STAGE_3:String { get { return "Stage3" } } // 1-3 delete (ENHANCE-A)
@@ -58,7 +58,7 @@ class Database {
 //	class var FINISH_LINE_1_6:Int { get { return 4900 } }delete (ENHANCE-A)
     class var FINISH_LINE_0:[Int] { get { return [99999] } }
     class var FINISH_LINE_1:[Int] { get { return [3520, 3520, 4350, 5200, 3450, 4900 ] } }
-    class var FINISH_LINE_2:[Int] { get { return [3520, 3520, 4500, 4120, 3850, 4400 ] } }
+    class var FINISH_LINE_2:[Int] { get { return [3520, 3600, 4500, 4120, 3850, 4400 ] } }
     
     class var NAME_FIELD:String { get { return "field" } }
     class var NAME_ROCK:String { get { return "rock" } }
